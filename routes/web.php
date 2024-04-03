@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
 Route::resource('/categories', CategoryController::class);
 
 Route::resource('/cities', CityController::class);
+
+Route::resource('/types', TypeController::class);
 });

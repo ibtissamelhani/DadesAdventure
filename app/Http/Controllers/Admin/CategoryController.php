@@ -45,17 +45,13 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
-    {
-        $countCat = Category::count();
-        return view('admin.category.edit', compact('category','countCat'));
-    }
+    
 
     /**
      * Update the specified resource in storage.
