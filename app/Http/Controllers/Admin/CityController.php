@@ -11,9 +11,9 @@ class CityController extends Controller
 {
     public function index()
     {
-        $cities = City::paginate(10);
+        $cities = City::paginate(8);
         $countCity = City::count();
-        return view ('admin.cities.index', compact('cities','countCity'));
+        return view ('admin.city.index', compact('cities','countCity'));
     }
 
     /**
@@ -33,7 +33,7 @@ class CityController extends Controller
             'name' => ['required', 'string', 'max:255', Rule::unique('cities')],
         ]);
         $city = City::create($validatedData);
-        return redirect()->route('admin.city.index')->with('success','City created successfully.');
+        return redirect()->route('admin.cities.index')->with('success','City created successfully.');
     }
 
     /**
@@ -62,7 +62,7 @@ class CityController extends Controller
             'name' => ['required', 'string', 'max:255', Rule::unique('cities')],
         ]);
         $city->update($validatedData);
-        return redirect()->route('admin.city.index')->with('success','City updated successfully.');
+        return redirect()->route('admin.cities.index')->with('success','City updated successfully.');
     }
 
     /**
@@ -71,6 +71,6 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->delete();
-        return redirect()->route('admin.city.index')->with('success','City deleted successfully.');
+        return redirect()->route('admin.cities.index')->with('success','City deleted successfully.');
     }
 }

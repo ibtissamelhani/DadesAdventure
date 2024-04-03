@@ -5,7 +5,7 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <div class="flex items-center gap-x-3">
-                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Categories</h2>
+                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Cities</h2>
 
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Add Category
+                        Add Cities
                     </button>
 
                     <!-- Main modal -->
@@ -33,7 +33,7 @@
                                 <div
                                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                        Create New Category
+                                        Create New City
                                     </h3>
                                     <button type="button"
                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -47,7 +47,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.categories.store') }}">
+                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.cities.store') }}">
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                         <div class="col-span-2">
@@ -55,7 +55,7 @@
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                                             <input type="text" name="name" id="name"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                placeholder="Type category name" required="">
+                                                placeholder="Type city name" required="">
                                         </div>
                                     </div>
                                     <button type="submit"
@@ -66,7 +66,7 @@
                                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                 clip-rule="evenodd"></path>
                                         </svg>
-                                        Add new category
+                                        Add new city
                                     </button>
                                 </form>
                             </div>
@@ -92,7 +92,7 @@
                                         <th scope="col"
                                             class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             <button class="flex items-center gap-x-3 focus:outline-none">
-                                                <span>Category</span>
+                                                <span>City</span>
 
                                                 <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -114,25 +114,25 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                    @forelse ($categories as $category)
+                                    @forelse ($cities as $city)
                                         <tr>
                                             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                 <div>
                                                     <h2 class="font-medium text-gray-800 dark:text-white ">
-                                                        {{ $category->id }}</h2>
+                                                        {{ $city->id }}</h2>
                                                 </div>
                                             </td>
 
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
-                                                    <h4 class="text-gray-700 dark:text-gray-200">{{ $category->name }}
+                                                    <h4 class="text-gray-700 dark:text-gray-200">{{ $city->name }}
                                                     </h4>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div class="flex items-center gap-x-6">
                                                     <form
-                                                        action="{{ route('admin.categories.destroy', $category->id) }}"
+                                                        action="{{ route('admin.cities.destroy', $city->id) }}"
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
@@ -147,8 +147,8 @@
                                                         </button>
                                                     </form>
                                                    <!-- Modal toggle -->
-                                                    <button data-modal-target="edit-modal{{$category->id}}"
-                                                        data-modal-toggle="edit-modal{{$category->id}}"
+                                                    <button data-modal-target="edit-modal{{$city->id}}"
+                                                        data-modal-toggle="edit-modal{{$city->id}}"
                                                         class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                                                         type="button">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -160,7 +160,7 @@
                                                     </button>
 
                                                     <!-- Main modal -->
-                                                    <div id="edit-modal{{$category->id}}" tabindex="-1" aria-hidden="true"
+                                                    <div id="edit-modal{{$city->id}}" tabindex="-1" aria-hidden="true"
                                                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                         <div class="relative p-4 w-full max-w-md max-h-full">
                                                             <!-- Modal content -->
@@ -171,11 +171,11 @@
                                                                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                                     <h3
                                                                         class="text-lg font-semibold text-gray-900 dark:text-white">
-                                                                        Edite Category
+                                                                        Edite city
                                                                     </h3>
                                                                     <button type="button"
                                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                        data-modal-toggle="edit-modal{{$category->id}}">
+                                                                        data-modal-toggle="edit-modal{{$city->id}}">
                                                                         <svg class="w-3 h-3" aria-hidden="true"
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             fill="none" viewBox="0 0 14 14">
@@ -189,7 +189,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <!-- Modal body -->
-                                                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.categories.update', $category->id ) }}">
+                                                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.cities.update', $city->id ) }}">
                                                                     @method("put")
                                                                     @csrf
                                                                     <div class="grid gap-4 mb-4 grid-cols-2">
@@ -198,9 +198,9 @@
                                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                                                                             <input type="text" name="name"
                                                                                 id="name"
-                                                                                value="{{$category->name}}"
+                                                                                value="{{$city->name}}"
                                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                                                placeholder="Type product name"
+                                                                                
                                                                                 required="">
                                                                         </div>
                                                                        
@@ -230,7 +230,7 @@
                                                             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                                     </svg>
                                                 </div>
-                                                <h1 class="mt-3 text-lg text-gray-800 dark:text-white">No categories
+                                                <h1 class="mt-3 text-lg text-gray-800 dark:text-white">No cities
                                                     found</h1>
                                                 <div class="flex items-center mt-4 sm:mx-auto gap-x-3">
                                                     <button
@@ -242,7 +242,7 @@
                                                                 d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
 
-                                                        <span>Add category</span>
+                                                        <span>Add city</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -250,7 +250,7 @@
                                 </tbody>
                             </table>
                             <div class="px-8 flex gap-10 py-2">
-                                {{ $categories->links() }}
+                                {{ $cities->links() }}
                             </div>
                         </div>
                     </div>
