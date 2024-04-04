@@ -5,9 +5,12 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <div class="flex items-center gap-x-3">
-                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Types</h2>
-
+                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Place Types</h2>
+        
+                        <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{{$countType}} types</span>
                     </div>
+        
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Place types encompass a broad spectrum of locations and environments that offer distinct experiences for visitors.</p>
                 </div>
 
                 <div class="flex items-center mt-4 gap-x-3">
@@ -249,9 +252,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="px-8 flex gap-10 py-2">
-                                {{ $types->links() }}
-                            </div>
+                        </div>
+                        <div class="px-8 flex gap-10 py-2">
+                            {{ $types->links() }}
                         </div>
                     </div>
                 </div>

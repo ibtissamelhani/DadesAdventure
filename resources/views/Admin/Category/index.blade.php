@@ -6,8 +6,11 @@
                 <div>
                     <div class="flex items-center gap-x-3">
                         <h2 class="text-lg font-medium text-gray-800 dark:text-white">Categories</h2>
-
+        
+                        <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{{$countCat}} categories</span>
                     </div>
+        
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Tourist activity categories classify the various experiences and pursuits available to travelers in a destination.</p>
                 </div>
 
                 <div class="flex items-center mt-4 gap-x-3">
@@ -249,9 +252,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="px-8 flex gap-10 py-2">
-                                {{ $categories->links() }}
-                            </div>
+                        </div>
+                        <div class="px-8 flex gap-10 py-2">
+                            {{ $categories->links() }}
                         </div>
                     </div>
                 </div>

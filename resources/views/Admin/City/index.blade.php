@@ -5,9 +5,12 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <div class="flex items-center gap-x-3">
-                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">Cities</h2>
-
+                        <h2 class="text-lg font-medium text-gray-800 dark:text-white">City</h2>
+        
+                        <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{{$countCity}} cities</span>
                     </div>
+        
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Cities serve as vibrant hubs where an array of activities cater to diverse interests and preferences.</p>
                 </div>
 
                 <div class="flex items-center mt-4 gap-x-3">
@@ -131,8 +134,7 @@
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div class="flex items-center gap-x-6">
-                                                    <form
-                                                        action="{{ route('admin.cities.destroy', $city->id) }}"
+                                                    <form action="{{ route('admin.cities.destroy', $city->id) }}"
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
@@ -146,9 +148,9 @@
                                                             </svg>
                                                         </button>
                                                     </form>
-                                                   <!-- Modal toggle -->
-                                                    <button data-modal-target="edit-modal{{$city->id}}"
-                                                        data-modal-toggle="edit-modal{{$city->id}}"
+                                                    <!-- Modal toggle -->
+                                                    <button data-modal-target="edit-modal{{ $city->id }}"
+                                                        data-modal-toggle="edit-modal{{ $city->id }}"
                                                         class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                                                         type="button">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -160,7 +162,8 @@
                                                     </button>
 
                                                     <!-- Main modal -->
-                                                    <div id="edit-modal{{$city->id}}" tabindex="-1" aria-hidden="true"
+                                                    <div id="edit-modal{{ $city->id }}" tabindex="-1"
+                                                        aria-hidden="true"
                                                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                         <div class="relative p-4 w-full max-w-md max-h-full">
                                                             <!-- Modal content -->
@@ -175,7 +178,7 @@
                                                                     </h3>
                                                                     <button type="button"
                                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                        data-modal-toggle="edit-modal{{$city->id}}">
+                                                                        data-modal-toggle="edit-modal{{ $city->id }}">
                                                                         <svg class="w-3 h-3" aria-hidden="true"
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             fill="none" viewBox="0 0 14 14">
@@ -189,8 +192,9 @@
                                                                     </button>
                                                                 </div>
                                                                 <!-- Modal body -->
-                                                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.cities.update', $city->id ) }}">
-                                                                    @method("put")
+                                                                <form class="p-4 md:p-5" method="POST"
+                                                                    action="{{ route('admin.cities.update', $city->id) }}">
+                                                                    @method('put')
                                                                     @csrf
                                                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                                                         <div class="col-span-2">
@@ -198,22 +202,20 @@
                                                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                                                                             <input type="text" name="name"
                                                                                 id="name"
-                                                                                value="{{$city->name}}"
+                                                                                value="{{ $city->name }}"
                                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                                                
                                                                                 required="">
                                                                         </div>
-                                                                       
+
                                                                     </div>
                                                                     <button type="submit"
                                                                         class="text-white inline-flex items-center bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                                                                        Update 
+                                                                        Update
                                                                     </button>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </td>
                                         </tr>
@@ -249,9 +251,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="px-8 flex gap-10 py-2">
-                                {{ $cities->links() }}
-                            </div>
+                        </div>
+                        <div class="px-8 flex gap-10 py-2">
+                            {{ $cities->links() }}
                         </div>
                     </div>
                 </div>
