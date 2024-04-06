@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->boolean('availability')->nullable();
+            $table->integer('status')->default(1);
             $table->string('spoken_languages')->nullable();
             $table->timestamps();
         });

@@ -170,7 +170,7 @@
 
 
                                                         <div>
-                                                            <h2 class="font-normal text-gray-800 dark:text-white ">Tech
+                                                            <h2 class="font-normal text-gray-800 dark:text-white ">
                                                                 {{ $place->id }}</h2>
 
                                                         </div>

@@ -17,6 +17,7 @@ class User extends Model
         'phone',
         'availability',
         'spoken_languages',
+        'status',
     ];
 
     protected $casts = [

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,10 @@ Route::resource('/cities', CityController::class);
 Route::resource('/types', TypeController::class);
 
 Route::resource('/places', PlaceController::class);
+
+Route::resource('/users', UserController::class);
+
+Route::put('/users/{userId}/block', [UserController::class, 'blockUser'])->name('users.block');
+Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->name('users.unblock');
+
 });
