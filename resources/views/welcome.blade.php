@@ -1,5 +1,5 @@
 <x-user.navbar>
-    <section id="dynamic-background" class="bg-center mt-14 bg-cover bg-no-repeat  bg-gray-700/50 bg-blend-multiply">
+    <section id="dynamic-background" class="bg-center  bg-cover bg-no-repeat  bg-gray-700/50 bg-blend-multiply">
         <div class="px-4 mx-auto max-w-screen text-center py-24 lg:py-56">
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl "> Welcome to
                 DadesAdventures, Dive into adventure! </h1>

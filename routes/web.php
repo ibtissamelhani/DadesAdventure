@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
 });
+
+Route::get('register', [RegisterController::class, 'create'])
+->name('register');
+
+Route::post('register', [RegisterController::class, 'store']);
+
 
 Route::prefix('admin')->name('admin.')->group(function() {
     
