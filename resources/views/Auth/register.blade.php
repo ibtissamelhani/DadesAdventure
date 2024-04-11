@@ -18,8 +18,7 @@
                     </h1>
 
                     <p class="mt-4 leading-relaxed text-gray-500">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                        quibusdam aperiam voluptatum.
+                        Unlock the gateway to unforgettable experiences - reserve your adventure today!
                     </p>
 
                     <form action="{{ route('register') }}" method="POST" class="mt-8 grid grid-cols-6 gap-6">
@@ -82,13 +81,13 @@
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button
-                                class="inline-block shrink-0 rounded-md border border-blood-red bg-blood-red px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blood-red focus:outline-none focus:ring active:text-blue-500">
+                                class="inline-block shrink-0 rounded-md  bg-delft-blue px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-900  focus:outline-none focus:ring active:text-blue-500">
                                 Create an account
                             </button>
 
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                 Already have an account?
-                                <a href="#" class="text-gray-700 underline hover:text-blue-600">Log in</a>.
+                                <a href="/login" class="text-gray-700 underline hover:text-blue-600">Log in</a>.
                             </p>
                         </div>
                     </form>

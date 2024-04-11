@@ -7,5 +7,11 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
-    
+    /**
+     * Display the login view.
+     */
+    public function create()
+    {
+        return view('auth.login');
+    }
 }
