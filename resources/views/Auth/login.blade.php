@@ -20,7 +20,8 @@
                     <p class="mt-4 leading-relaxed text-gray-500">
                         Unlock the gateway to unforgettable experiences - reserve your adventure today!
                     </p>
-                    <form class="w-full max-w-md">
+                    <form class="w-full max-w-md" method="POST" action="{{route('login')}}">
+                        @csrf
                         <div class="relative flex items-center mt-8">
                             <span class="absolute">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +32,7 @@
                                 </svg>
                             </span>
 
-                            <input type="email"
+                            <input type="email" name="email"
                                 class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 placeholder="Email address">
                         </div>
@@ -46,7 +47,7 @@
                                 </svg>
                             </span>
 
-                            <input type="password"
+                            <input type="password" name="password"
                                 class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 placeholder="Password">
                         </div>
