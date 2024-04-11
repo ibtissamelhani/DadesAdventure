@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
         if (Auth::user()->roles->contains('id', 1)) {
             return redirect()->route('dashboard');
         } else {
-            return view('welcome');
+            return redirect('/');
         }
     }
 

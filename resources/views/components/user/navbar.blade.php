@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+        
     @vite('resources/css/app.css')
     <title>DadesAdventures</title>
 </head>
@@ -93,11 +94,18 @@
                         <a href="#"
                             class="block py-2 px-3 text-gray-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-cornell-red md:p-0 dark:text-white ">CONTACT</a>
                     </li>
+                    @auth
                     <li>
                         <a href=""
                             class="text-gray-50 bg-cornell-red border border-cornell-red focus:outline-none hover:bg-cornell-red/60 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Log
                             in</a>
                     </li>
+                    @else
+                    <li>
+                        <a href=""
+                            class="text-gray-50 bg-cornell-red border border-cornell-red focus:outline-none hover:bg-cornell-red/60 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Profile</a>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
