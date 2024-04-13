@@ -7,7 +7,8 @@
                 journeys with us. Explore our curated tours and activities for boundless exploration and exhilarating
                 adventures. Book now!</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-                <a href="#"
+                @guest
+                <a href="{{route('register')}}"
                     class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-cornell-red hover:bg-cornell-red/60 focus:ring-4 focus:ring-red-300 dark:focus:ring-cornell-red">
                     Get started
                     <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -16,17 +17,18 @@
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
                     </svg>
                 </a>
-                <a href="#"
+                <a href="{{route('login')}}"
                     class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                     Log In
                 </a>
+                @endguest
             </div>
         </div>
     </section>
-    <section class="  bg-delft-blue dark:bg-gray-900">
+    <section class="dark:bg-gray-900">
         <div class="container px-6 py-10  max-w-screen-xl mx-auto">
             <div class="text-center">
-                <h1 class="text-2xl font-semibold text-gray-200 capitalize lg:text-3xl dark:text-white">Popular Things
+                <h1 class="text-2xl font-semibold text-delft-blue capitalize lg:text-3xl dark:text-white">Popular Things
                     To Do</h1>
 
                 <p class="max-w-lg mx-auto mt-4 text-gray-400">

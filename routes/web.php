@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,16 +22,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
-});
+})->name('dashboard');
+
+
+/**
+     * Auth routes
+     *//////////////////////////////////////////////////////////////////
 
 Route::get('register', [RegisterController::class, 'create'])
 ->name('register');
 
+Route::get('login', [AuthenticationController::class, 'create'])
+->name('login');
+
 Route::post('register', [RegisterController::class, 'store']);
+
+Route::post('login', [AuthenticationController::class, 'store']);
+
+Route::post('logout', [AuthenticationController::class, 'destroy'])
+                ->name('logout');
+
+////////////////////////////////////////////////////////////////////////
 
 
 Route::prefix('admin')->name('admin.')->group(function() {
