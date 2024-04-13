@@ -65,3 +65,11 @@ Route::put('/users/{userId}/block', [UserController::class, 'blockUser'])->name(
 Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->name('users.unblock');
 
 });
+
+//////////////////////////////////////////////////////////////////////////
+
+Route::prefix('provider')->name('provider.')->group(function(){
+    Route::get('/dashboard', function () {
+        return view('Provider.dashboard');
+    })->name('dashboard');
+});
