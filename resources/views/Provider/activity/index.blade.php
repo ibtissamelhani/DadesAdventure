@@ -8,11 +8,11 @@
             </div>
 
             <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-                <button
+                <a href="{{route('provider.activities.create')}}"
                     class="block rounded-lg bg-blood-red px-5 py-3 text-sm font-medium text-white transition hover:bg-cornell-red focus:outline-none focus:ring"
-                    type="button">
+                    >
                     Create Post
-                </button>
+            </a>
             </div>
         </div>
     </div>
