@@ -54,12 +54,12 @@
                             visibility
                         </span>
                     </a>
-                    <a href="" class="hover:text-yellow-500">
+                    <a href="{{route('provider.activities.edit', $proActivity->id )}}" class="hover:text-yellow-500">
                         <span class="material-symbols-outlined hover:text-yellow-500">
                             edit
                         </span>
                     </a>
-                    <form action="" method="post">
+                    <form action="{{route('provider.activities.destroy', $proActivity->id )}}" method="post">
                         @method('DELETE')
                         @csrf
                         <button type="submit">
@@ -71,7 +71,7 @@
                 </div>
             </div>
         @empty
-            <li>No Activities Yet creat one!.</li>
+            <li>No Activities Yet, Creat One!.</li>
         @endforelse
     </div>
 </x-provider.dashboard>
