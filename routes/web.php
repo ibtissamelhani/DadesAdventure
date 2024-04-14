@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/contactUs', function () {
+    return view('contact');
+})->name('contact');
+
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
 })->name('dashboard');

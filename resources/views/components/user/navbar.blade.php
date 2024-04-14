@@ -92,7 +92,7 @@
                             class="block py-2 px-3 text-gray-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-cornell-red md:p-0 dark:text-white ">ABOUT</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{route('contact')}}"
                             class="block py-2 px-3 text-gray-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-cornell-red md:p-0 dark:text-white ">CONTACT</a>
                     </li>
                     @auth
