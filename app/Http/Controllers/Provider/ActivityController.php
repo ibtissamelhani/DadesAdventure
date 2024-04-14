@@ -20,6 +20,11 @@ class ActivityController extends Controller
         return view('Provider.activity.index', compact('proActivities'));
     }
 
+    public function show(Activity $activity)
+    {
+        return view('Provider.activity.show',compact('activity'));
+    }
+
     public function create()
     {
         $categories = Category::all();

@@ -99,8 +99,6 @@
                         @enderror
                     </div>
 
-
-
                     <div>
                         <select id="category-select" name="category_id"
                             class="w-full rounded-lg border border-gray-200 p-3 text-sm">
@@ -114,10 +112,7 @@
                             <p class="text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
-
-
                 </div>
-
                 <div>
                     <label class="sr-only" for="message">Description</label>
                     <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" name="description" placeholder="Activity Description"

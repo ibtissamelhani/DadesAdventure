@@ -49,7 +49,7 @@
                     <p class="text-sm text-gray-500 pt-4">Activity date : {{$proActivity->date}}</p>
                 </div>
                 <div class="flex justify-end gap-4 pb-5 px-6">
-                    <a href="" class="hover:text-blue-500">
+                    <a href="{{route('provider.activities.show', $proActivity->id )}}" class="hover:text-blue-500">
                         <span class="material-symbols-outlined hover:text-blue-500">
                             visibility
                         </span>
