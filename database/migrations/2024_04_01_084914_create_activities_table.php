@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('capacity');
             $table->date('date');
             $table->integer('status')->default(0);
-            $table->string('image');
+            // $table->string('image');
             $table->foreignId('place_id')
                 ->constrained()
                 ->onUpdate('cascade')

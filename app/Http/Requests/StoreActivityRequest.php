@@ -27,7 +27,6 @@ class StoreActivityRequest extends FormRequest
         'price' => 'required|numeric|min:0',
         'date' => 'required|date|after_or_equal:today',
         'capacity' => 'required|integer|min:1',
-        'status' => 'required|integer',
         'provider_id' => 'required|exists:users,id',
         'guide_id' => 'nullable|exists:users,id',
         'place_id' => 'required|exists:places,id',

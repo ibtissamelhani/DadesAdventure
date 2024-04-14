@@ -31,19 +31,10 @@ class ActivityController extends Controller
 
     public function store(StoreActivityRequest $request)
     {
-        
-        $validatedData = $request->validated();
-    
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->storeAs('public/images', $imageName); 
-        $validatedData['image'] = 'images/' . $imageName;
-    }
+    $activity = Activity::create($request->all());
+    $activity->addMediaFromRequest('image')->toMediaCollection('images');
 
-    $activity = Activity::create($validatedData);
-
-    return redirect()->route('provider.activity.index')->with('success', 'Activity created successfully!');
+    return redirect()->route('provider.activities.index')->with('success', 'Activity created successfully!');
 
     }
 }

@@ -22,7 +22,7 @@
                     @enderror
                 </div>
                 <div>
-                    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" name="user_id" type="hidden"
+                    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" name="provider_id" type="hidden"
                         value="{{ Auth::user()->id }}" id="provider_id" />
                 </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">

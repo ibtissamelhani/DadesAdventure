@@ -22,7 +22,7 @@
                 <img class="h-48 w-full rounded-t-lg object-cover object-center"
                     src="" alt="Photo">
                 <div class="p-5">
-                    <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ $orgEvent->name }}</h5>
+                    <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ $proActivitie->name }}</h5>
                    
                         <span
                             class="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700">
