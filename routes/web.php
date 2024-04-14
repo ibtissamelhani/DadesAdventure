@@ -75,7 +75,10 @@ Route::prefix('provider')->name('provider.')->group(function(){
     Route::get('/dashboard', function () {
         return view('Provider.dashboard');
     })->name('dashboard');
+    
+    Route::get('/activities/search', [ActivityController::class, 'search'])->name('activities.search');
 
     Route::resource('/activities', ActivityController::class);
+
 
 });

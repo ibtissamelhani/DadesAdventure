@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->decimal('price');
             $table->integer('capacity');
             $table->date('date');
             $table->integer('status')->default(0);
-            // $table->string('image');
             $table->foreignId('place_id')
                 ->constrained()
                 ->onUpdate('cascade')
