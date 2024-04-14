@@ -17,13 +17,13 @@
         </div>
     </div>
     <div class="grid grid-cols-3 gap-4 mb-4 p-4 bg-gray-50">
-        @forelse($proActivities as $proActivitie)
+        @forelse($proActivities as $proActivity)
             <div class="max-w-sm mt-12 rounded-lg bg-white shadow-md dark:bg-gray-600">
                 <img class="h-48 w-full rounded-t-lg object-cover object-center"
-                    src="" alt="Photo">
+                    src="{{ $proActivity->getFirstMediaUrl('images') }}" alt="Photo">
                 <div class="p-5">
-                    <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ $proActivitie->name }}</h5>
-                   
+                    <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ $proActivity->name }}</h5>
+                   @if ($proActivity->status == 1)
                         <span
                             class="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -34,7 +34,7 @@
 
                             <p class="whitespace-nowrap text-sm">published</p>
                         </span>
-                    
+                   @else
                         <span
                             class="inline-flex items-center justify-center rounded-full bg-amber-100 px-2.5 py-0.5 text-amber-700">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -44,9 +44,9 @@
                             </svg>
 
                             <p class="whitespace-nowrap text-sm">Pending</p>
-                        </span>
-                    
-                    <p class="text-sm text-gray-500 pt-4">Event date : </p>
+                        </span>                 
+                   @endif
+                    <p class="text-sm text-gray-500 pt-4">Activity date : {{$proActivity->date}}</p>
                 </div>
                 <div class="flex justify-end gap-4 pb-5 px-6">
                     <a href="" class="hover:text-blue-500">
