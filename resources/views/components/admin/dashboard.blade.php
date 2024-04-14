@@ -123,7 +123,7 @@
                  </ul>
                 <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                    <li>
-                      <a href="#" class="flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-gray-100/20 dark:hover:bg-gray-700 dark:text-white group">
+                      <a href="{{route('admin.activities.index')}}" class="flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-gray-100/20 dark:hover:bg-gray-700 dark:text-white group">
                         <span class="material-symbols-outlined flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white">
                             hub
                             </span>
