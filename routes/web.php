@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Provider\ActivityController;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,5 +65,17 @@ Route::resource('/users', UserController::class);
 
 Route::put('/users/{userId}/block', [UserController::class, 'blockUser'])->name('users.block');
 Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->name('users.unblock');
+
+});
+
+//////////////////////////////////////////////////////////////////////////
+
+Route::prefix('provider')->name('provider.')->group(function(){
+    
+    Route::get('/dashboard', function () {
+        return view('Provider.dashboard');
+    })->name('dashboard');
+
+    Route::resource('/activities', ActivityController::class);
 
 });
