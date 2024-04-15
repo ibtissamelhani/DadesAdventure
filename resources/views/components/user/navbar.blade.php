@@ -134,6 +134,7 @@
         </div>
     </nav>
     {{ $slot }}
+    <x-user.footer></x-user.footer>
     <script>
         var images = [
             '/images/1.jpg',
