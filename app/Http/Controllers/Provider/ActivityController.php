@@ -74,4 +74,20 @@ class ActivityController extends Controller
         return redirect()->route('provider.activities.index')
             ->with('success', 'Activity deleted successfully.');
     }
+
+    public function search(Request $request)
+{
+    $searchTerm = $request->input('search');
+
+    $proActivities = Activity::query()
+        ->where('name', 'like', '%' . $searchTerm . '%')
+        ->orWhereHas('place', function ($query) use ($searchTerm) {
+            $query->where('name', 'like', '%' . $searchTerm . '%');
+        })
+        ->orWhereHas('category', function ($query) use ($searchTerm) {
+            $query->where('name', 'like', '%' . $searchTerm . '%');
+        })->get();
+
+    return view('Provider.activity.index', compact('proActivities'));
+}
 }

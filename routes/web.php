@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityController as AdminActivityController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\PlaceController;
@@ -25,6 +26,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/ContactUs', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/AbouttUs', function () {
+    return view('about');
+})->name('about');
 
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
@@ -52,7 +61,7 @@ Route::post('logout', [AuthenticationController::class, 'destroy'])
 
 
 Route::prefix('admin')->name('admin.')->group(function() {
-    
+
 Route::resource('/categories', CategoryController::class);
 
 Route::resource('/cities', CityController::class);
@@ -62,6 +71,10 @@ Route::resource('/types', TypeController::class);
 Route::resource('/places', PlaceController::class);
 
 Route::resource('/users', UserController::class);
+
+Route::resource('/activities', AdminActivityController::class);
+Route::post('/activities/publish/{activity}', [AdminActivityController::class, 'publishActivity'])->name('activity.publish');
+
 
 Route::put('/users/{userId}/block', [UserController::class, 'blockUser'])->name('users.block');
 Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->name('users.unblock');
@@ -75,7 +88,10 @@ Route::prefix('provider')->name('provider.')->group(function(){
     Route::get('/dashboard', function () {
         return view('Provider.dashboard');
     })->name('dashboard');
+    
+    Route::get('/activities/search', [ActivityController::class, 'search'])->name('activities.search');
 
     Route::resource('/activities', ActivityController::class);
+
 
 });
