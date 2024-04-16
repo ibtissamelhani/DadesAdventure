@@ -35,7 +35,7 @@
     </div>
     <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
         @foreach ($guides as $guide)
-        <div
+        <a href="{{route('admin.guides.show',$guide->id)}}"
             class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blood-red dark:border-gray-700 dark:hover:border-transparent">
             <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
                 src="{{ $guide->getFirstMediaUrl('profiles') }}"
@@ -48,7 +48,7 @@
             <div class="flex mt-3 -mx-2 group-hover:text-white">
                 {{$guide->city->name}}
             </div>
-        </div>
+        </a>
         @endforeach
     </div>
 </x-admin.dashboard>

@@ -1,4 +1,11 @@
 <x-admin.dashboard>
+    <a href="{{ route('admin.guides.index') }}">
+        <svg class="w-6 h-6 hover:text-cornell-red text-gray-800 dark:text-white" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
+        </svg>
+    </a>
     <div class="rounded-lg bg-white  p-8 shadow-lg  lg:col-span-3 lg:p-12">
         <form action="{{ route('admin.guides.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
             @csrf

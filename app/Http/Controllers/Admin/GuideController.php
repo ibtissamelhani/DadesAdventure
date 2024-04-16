@@ -29,6 +29,9 @@ class GuideController extends Controller
         $cities = City::all();
         return view ('admin.guide.create',compact('cities'));
     }
+    public function show(User $guide){
+        return view ('admin.guide.show',compact('guide'));
+    }
 
     public function store(StoreGuideRequest $request){
 
@@ -47,4 +50,6 @@ class GuideController extends Controller
 
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }
+
+    
 }
