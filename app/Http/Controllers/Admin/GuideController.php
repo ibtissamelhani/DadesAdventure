@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGuideRequest;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,8 @@ class GuideController extends Controller
     }
 
     public function create(){
-        return view ('admin.guide.create');
+        $cities = City::all();
+        return view ('admin.guide.create',compact('cities'));
     }
 
     public function store(StoreGuideRequest $request){
@@ -35,6 +37,7 @@ class GuideController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'city_id' => $request->city_id,
             'spoken_languages' => implode(',', $request->spoken_languages),
             'password' => Hash::make($request->password),
         ]);

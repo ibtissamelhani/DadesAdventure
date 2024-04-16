@@ -45,8 +45,8 @@
 
             <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">Guide</p>
 
-            <div class="flex mt-3 -mx-2">
-                
+            <div class="flex mt-3 -mx-2 group-hover:text-white">
+                {{$guide->city->name}}
             </div>
         </div>
         @endforeach
