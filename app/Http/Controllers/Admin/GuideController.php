@@ -20,7 +20,7 @@ class GuideController extends Controller
     {
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
-        })->where('status', 1)->get();
+        })->get();
         
         return view ('admin.guide.index', compact('guides'));
     }
@@ -49,6 +49,23 @@ class GuideController extends Controller
         $user->addMediaFromRequest('profile')->toMediaCollection('profiles');
 
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
+    }
+
+    public function blockUser($guideId)
+    {
+        $user = User::findOrFail($guideId);
+        $user->status = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User blocked successfully.');
+    }
+
+    public function unblockUser($guideId)
+    {
+        $user = User::findOrFail($guideId);
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'User unblocked successfully.');
     }
 
     

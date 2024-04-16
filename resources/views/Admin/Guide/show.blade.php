@@ -76,7 +76,7 @@
 
                 <div class="flex items-center justify-between mt-12 lg:justify-start">
                     @if ($guide->status === 1)
-                        <form action="{{ route('admin.users.block', $guide->id) }}" method="post">
+                        <form action="{{ route('admin.guide.block', $guide->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="block user"
@@ -85,11 +85,11 @@
                             </button>
                         </form>
                     @elseif($guide->status === 0)
-                        <form action="{{ route('admin.users.unblock', $guide->id) }}" method="post">
+                        <form action="{{ route('admin.guide.unblock', $guide->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="unblock user"
-                                class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                                class="focus:outline-none text-white bg-yellow-600 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                                 unblock
                             </button>
                         </form>
