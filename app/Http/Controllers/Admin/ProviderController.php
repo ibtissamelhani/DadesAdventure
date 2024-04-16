@@ -31,7 +31,7 @@ class ProviderController extends Controller
 
 
     public function show(User $provider){
-        return view ('admin.guide.show',compact('provider'));
+        return view ('admin.provider.show',compact('provider'));
     }
 
 
