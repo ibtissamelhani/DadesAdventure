@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Provider\ActivityController;
+use App\Http\Controllers\User\ContactController;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/ContactUs', function () {
+Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
@@ -39,6 +40,12 @@ Route::get('/dashboard', function () {
     return view('Admin.dashboard');
 })->name('dashboard');
 
+
+
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
+Route::get('/test-email', [ContactController::class, 'testEmail']);
 
 /**
      * Auth routes
