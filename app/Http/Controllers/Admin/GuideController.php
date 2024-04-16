@@ -19,7 +19,7 @@ class GuideController extends Controller
     {
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
-        })->get();
+        })->where('status', 1)->get();
         
         return view ('admin.guide.index', compact('guides'));
     }
