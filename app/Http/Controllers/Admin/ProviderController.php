@@ -51,4 +51,21 @@ class ProviderController extends Controller
 
         return redirect()->route('admin.providers.index')->with('success', 'Provider added successfully.');;
     }
+
+    public function blockUser($providerId)
+    {
+        $user = User::findOrFail($providerId);
+        $user->status = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User blocked successfully.');
+    }
+
+    public function unblockUser($providerId)
+    {
+        $user = User::findOrFail($providerId);
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'User unblocked successfully.');
+    }
 }

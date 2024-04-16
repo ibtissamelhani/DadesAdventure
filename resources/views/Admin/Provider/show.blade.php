@@ -72,7 +72,7 @@
 
                 <div class="flex items-center justify-between mt-12 lg:justify-start">
                     @if ($provider->status === 1)
-                        <form action="{{ route('admin.guide.block', $provider->id) }}" method="post">
+                        <form action="{{ route('admin.provider.block', $provider->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="block user"
@@ -81,7 +81,7 @@
                             </button>
                         </form>
                     @elseif($provider->status === 0)
-                        <form action="{{ route('admin.guide.unblock', $provider->id) }}" method="post">
+                        <form action="{{ route('admin.provider.unblock', $provider->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="unblock user"

@@ -97,6 +97,9 @@ Route::put('/guides/{guideId}/unblock', [GuideController::class, 'unblockUser'])
 
 
 Route::resource('/providers', ProviderController::class);
+Route::put('/providers/{providerId}/block', [ProviderController::class, 'blockUser'])->name('provider.block');
+Route::put('/providers/{providerId}/unblock', [ProviderController::class, 'unblockUser'])->name('provider.unblock');
+
 
 });
 
