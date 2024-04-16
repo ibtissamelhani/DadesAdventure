@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ActivityController as AdminActivityController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\GuideController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
@@ -49,7 +50,8 @@ Route::get('/test-email', [ContactController::class, 'testEmail']);
 
 /**
      * Auth routes
-     *//////////////////////////////////////////////////////////////////
+     *///////////////////////////////////////////////////////////////////////////////////////////
+
 
 Route::get('register', [RegisterController::class, 'create'])
 ->name('register');
@@ -64,7 +66,8 @@ Route::post('login', [AuthenticationController::class, 'store']);
 Route::post('logout', [AuthenticationController::class, 'destroy'])
                 ->name('logout');
 
-////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 Route::prefix('admin')->name('admin.')->group(function() {
@@ -86,9 +89,12 @@ Route::post('/activities/publish/{activity}', [AdminActivityController::class, '
 Route::put('/users/{userId}/block', [UserController::class, 'blockUser'])->name('users.block');
 Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->name('users.unblock');
 
+
+Route::resource('/guides', GuideController::class);
+
 });
 
-//////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::prefix('provider')->name('provider.')->group(function(){
     

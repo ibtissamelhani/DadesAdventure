@@ -15,12 +15,12 @@ class GuideController extends Controller
      */
     public function index()
     {
-        $users = User::whereHas('roles', function ($query) {
+        $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
         })->get();
-        $usersCount = User::whereHas('roles', function ($query) {
-            $query->where('name', 'guide');
-        })->where('status', 1)->count();
-        return view ('admin.user.index', compact('users','usersCount'));
+        // $usersCount = User::whereHas('roles', function ($query) {
+        //     $query->where('name', 'guide');
+        // })->where('status', 1)->count();
+        return view ('admin.guide.index', compact('guides'));
     }
 }
