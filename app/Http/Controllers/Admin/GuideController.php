@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGuideRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GuideController extends Controller
 {
@@ -15,12 +17,31 @@ class GuideController extends Controller
      */
     public function index()
     {
-        $users = User::whereHas('roles', function ($query) {
+        $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
         })->get();
-        $usersCount = User::whereHas('roles', function ($query) {
-            $query->where('name', 'guide');
-        })->where('status', 1)->count();
-        return view ('admin.user.index', compact('users','usersCount'));
+        
+        return view ('admin.guide.index', compact('guides'));
+    }
+
+    public function create(){
+        return view ('admin.guide.create');
+    }
+
+    public function store(StoreGuideRequest $request){
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'spoken_languages' => implode(',', $request->spoken_languages),
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->roles()->attach(3);
+        $user->addMediaFromRequest('profile')->toMediaCollection('profiles');
+
+        return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }
 }

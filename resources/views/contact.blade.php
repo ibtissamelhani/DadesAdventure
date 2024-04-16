@@ -77,30 +77,31 @@
                 </div>
 
                 <div class="p-4 py-6 rounded-lg bg-gray-100 dark:bg-gray-800 md:p-8">
-                    <form>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="-mx-2 md:items-center md:flex">
                             <div class="flex-1 px-2">
                                 <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">First Name</label>
-                                <input type="text" placeholder="John "
+                                <input type="text" placeholder="John " name="firstName"
                                     class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-red-400 dark:focus:border-blue-400 focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
 
                             <div class="flex-1 px-2 mt-4 md:mt-0">
                                 <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Last Name</label>
-                                <input type="text" placeholder="Doe"
+                                <input type="text" placeholder="Doe" name="lastName"
                                     class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-red-400 dark:focus:border-blue-400 focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                         </div>
 
                         <div class="mt-4">
                             <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
-                            <input type="email" placeholder="johndoe@example.com"
+                            <input type="email" placeholder="johndoe@example.com" name="email"
                                 class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-red-400 dark:focus:border-blue-400 focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         </div>
 
                         <div class="w-full mt-4">
                             <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
-                            <textarea
+                            <textarea name="message"
                                 class="block w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-red-400 dark:focus:border-blue-400 focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                 placeholder="Message"></textarea>
                         </div>
