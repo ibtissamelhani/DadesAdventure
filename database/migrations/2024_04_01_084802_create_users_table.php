@@ -21,6 +21,10 @@ return new class extends Migration
             $table->boolean('availability')->nullable();
             $table->integer('status')->default(1);
             $table->string('spoken_languages')->nullable();
+            $table->foreignId('city_id')->nullable()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

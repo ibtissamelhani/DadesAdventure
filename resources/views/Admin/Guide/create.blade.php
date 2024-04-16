@@ -1,4 +1,11 @@
 <x-admin.dashboard>
+    <a href="{{ route('admin.guides.index') }}">
+        <svg class="w-6 h-6 hover:text-cornell-red text-gray-800 dark:text-white" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13" />
+        </svg>
+    </a>
     <div class="rounded-lg bg-white  p-8 shadow-lg  lg:col-span-3 lg:p-12">
         <form action="{{ route('admin.guides.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
             @csrf
@@ -56,7 +63,19 @@
                     <p class="text-sm text-red-500">{{ $message }}</p>
                 @enderror
             </div>
-
+            <div>
+                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">City</label>
+                <select id="countries" name="city_id"
+                class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                <option disabled selected>Choose a city</option>
+                @foreach ($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+                  </select>
+                @error('city_id')
+                    <p class="text-sm text-red-500">{{ $message }}</p>
+                @enderror
+            </div>
             <div>
                 <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Spoken Languages</label>
                 <select multiple id="countries_multiple" name="spoken_languages[]"

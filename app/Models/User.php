@@ -21,6 +21,7 @@ class User extends Authenticatable implements HasMedia
         'availability',
         'spoken_languages',
         'status',
+        'city_id',
     ];
 
     protected $casts = [
@@ -51,5 +52,9 @@ class User extends Authenticatable implements HasMedia
     public function guidedActivities()
     {
         return $this->hasMany(Activity::class, 'guide_id');
+    }
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

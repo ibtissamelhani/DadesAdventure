@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGuideRequest;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,13 +20,17 @@ class GuideController extends Controller
     {
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
-        })->get();
+        })->where('status', 1)->get();
         
         return view ('admin.guide.index', compact('guides'));
     }
 
     public function create(){
-        return view ('admin.guide.create');
+        $cities = City::all();
+        return view ('admin.guide.create',compact('cities'));
+    }
+    public function show(User $guide){
+        return view ('admin.guide.show',compact('guide'));
     }
 
     public function store(StoreGuideRequest $request){
@@ -35,6 +40,7 @@ class GuideController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'city_id' => $request->city_id,
             'spoken_languages' => implode(',', $request->spoken_languages),
             'password' => Hash::make($request->password),
         ]);
@@ -44,4 +50,6 @@ class GuideController extends Controller
 
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }
+
+    
 }
