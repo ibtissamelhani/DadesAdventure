@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\GuideController;
 use App\Http\Controllers\Admin\PlaceController;
+use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticationController;
@@ -91,6 +92,11 @@ Route::put('/users/{userId}/unblock', [UserController::class, 'unblockUser'])->n
 
 
 Route::resource('/guides', GuideController::class);
+Route::put('/guides/{guideId}/block', [GuideController::class, 'blockUser'])->name('guide.block');
+Route::put('/guides/{guideId}/unblock', [GuideController::class, 'unblockUser'])->name('guide.unblock');
+
+
+Route::resource('/providers', ProviderController::class);
 
 });
 

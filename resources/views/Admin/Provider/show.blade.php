@@ -1,5 +1,5 @@
 <x-admin.dashboard>
-    <a href="{{ route('admin.guides.index') }}">
+    <a href="{{ route('admin.providers.index') }}">
         <svg class="w-6 h-6 hover:text-cornell-red text-gray-800 dark:text-white" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -14,40 +14,36 @@
             <div
                 class="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
                 <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
-                    Guide Name: <span class="text-cornell-red">{{ $guide->first_name }} <br> {{ $guide->last_name }}
+                    Provider: <span class="text-green-500">{{ $provider->first_name }} <br> {{ $provider->last_name }}
                     </span>
                 </h1>
 
                 <div class="mt-10 lg:mt-20 lg:flex lg:items-center">
                     <img class="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96"
-                        src="{{ $guide->getFirstMediaUrl('profiles') }}" alt="profile">
+                        src="{{ $provider->getFirstMediaUrl('profiles') }}" alt="profile">
 
                     <div class="mt-8 lg:px-10 lg:mt-0">
                         <p class="max-w-lg text-gray-500 dark:text-gray-400">
                             <span class="text-gray-900 text-lg font-semibold">First name</span> :
-                            {{ $guide->first_name }}
+                            {{ $provider->first_name }}
                         </p>
                         <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                            <span class="text-gray-900 text-lg font-semibold">Last name</span> : {{ $guide->last_name }}
-                        </p>
-
-                        <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                            <span class="text-gray-900 text-lg font-semibold">Email</span> : {{ $guide->email }}
+                            <span class="text-gray-900 text-lg font-semibold">Last name</span> : {{ $provider->last_name }}
                         </p>
 
                         <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                            <span class="text-gray-900 text-lg font-semibold">Phone</span> : {{ $guide->phone }}
+                            <span class="text-gray-900 text-lg font-semibold">Email</span> : {{ $provider->email }}
                         </p>
 
                         <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                            <span class="text-gray-900 text-lg font-semibold">City</span> : {{ $guide->city->name }}
+                            <span class="text-gray-900 text-lg font-semibold">Phone</span> : {{ $provider->phone }}
                         </p>
 
                         <p class="max-w-lg my-6 text-gray-500 dark:text-gray-400">
-                            <span class="text-gray-900 text-lg font-semibold">Spoken Languages</span> :
-                            {{ $guide->spoken_languages }}
+                            <span class="text-gray-900 text-lg font-semibold">City</span> : {{ $provider->city->name }}
                         </p>
-                        @if ($guide->status === 1)
+
+                        @if ($provider->status === 1)
                             <span
                                 class="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -75,8 +71,8 @@
                 </div>
 
                 <div class="flex items-center justify-between mt-12 lg:justify-start">
-                    @if ($guide->status === 1)
-                        <form action="{{ route('admin.guide.block', $guide->id) }}" method="post">
+                    @if ($provider->status === 1)
+                        <form action="{{ route('admin.guide.block', $provider->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="block user"
@@ -84,8 +80,8 @@
                                 block
                             </button>
                         </form>
-                    @elseif($guide->status === 0)
-                        <form action="{{ route('admin.guide.unblock', $guide->id) }}" method="post">
+                    @elseif($provider->status === 0)
+                        <form action="{{ route('admin.guide.unblock', $provider->id) }}" method="post">
                             @method('put')
                             @csrf
                             <button title="unblock user"

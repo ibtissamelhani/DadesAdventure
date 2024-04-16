@@ -2,7 +2,7 @@
     <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between md:flex md:items-center md:justify-between flex-wrap">
             <div class="text-center sm:text-left">
-                <h1 class="text-2xl font-bold text-cornell-red sm:text-3xl">Guides</h1>
+                <h1 class="text-2xl font-bold text-green-500 sm:text-3xl">Activity Providers</h1>
             </div>
             <div class="relative">
                 <form action="" method="GET">
@@ -26,31 +26,31 @@
             </div>
 
             <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-                <a href="{{ route('admin.guides.create') }}"
+                <a href="{{ route('admin.providers.create') }}"
                     class="block rounded-lg bg-blood-red px-5 py-3 text-sm font-medium text-white transition hover:bg-cornell-red focus:outline-none focus:ring">
-                    Add Guides
+                    Add Provider
                 </a>
             </div>
         </div>
     </div>
     <div class="grid grid-cols-1 guide-wrapper gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
-        @foreach ($guides as $guide)
-            <a href="{{ route('admin.guides.show', $guide->id) }}"
+        @foreach ($providers as $provider)
+            <a href="{{ route('admin.providers.show', $provider->id) }}"
                 class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group bg-gray-50 hover:bg-blood-red dark:border-gray-700 dark:hover:border-transparent">
                 <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-                    src="{{ $guide->getFirstMediaUrl('profiles') }}" alt="">
+                    src="{{ $provider->getFirstMediaUrl('profiles') }}" alt="">
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                    {{ $guide->first_name }} {{ $guide->last_name }}</h1>
+                    {{ $provider->first_name }} {{ $provider->last_name }}</h1>
 
-                <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">Guide</p>
+                <p class="mt-2 text-green-500 font-semibold capitalize dark:text-green-500 group-hover:text-green-300">Provider</p>
 
                 <div class="flex mt-3 -mx-2 group-hover:text-white">
-                    {{ $guide->city->name }}
+                    {{ $provider->city->name }}
                 </div>
             </a>
         @endforeach
         <div class="flex justify-center w-full mt-8 mx-auto">
-            {{ $guides->links('pagination::tailwind') }}
+            {{ $providers->links('pagination::tailwind') }}
         </div>
     </div>
 </x-admin.dashboard>

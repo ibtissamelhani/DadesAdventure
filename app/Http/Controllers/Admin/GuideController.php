@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class GuideController extends Controller
 {
-    //
 
     /**
      * Display a listing of the resource.
@@ -20,7 +19,7 @@ class GuideController extends Controller
     {
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
-        })->where('status', 1)->get();
+        })->paginate(8);
         
         return view ('admin.guide.index', compact('guides'));
     }
@@ -51,5 +50,46 @@ class GuideController extends Controller
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }
 
-    
+    public function blockUser($guideId)
+    {
+        $user = User::findOrFail($guideId);
+        $user->status = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User blocked successfully.');
+    }
+
+    public function unblockUser($guideId)
+    {
+        $user = User::findOrFail($guideId);
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'User unblocked successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $searchItem = $request->query('searchItem');
+
+        $guides = User::with('city')
+        ->where('role', 'guide')
+        ->where('statu', '1');
+
+        if ($searchItem) {
+        $guides->where(function ($query) use ($searchItem) {
+            $query->where('first_name', 'like', '%' . $searchItem . '%')
+                  ->orWhere('last_name', 'like', '%' . $searchItem . '%')
+                  ->orWhereHas('city', function ($query) use ($searchItem) {
+                      $query->where('name', 'like', '%' . $searchItem . '%');
+                  });
+        })->get();
+        }
+
+        
+        foreach ($guides as $guide) {
+            $guide['profile'] = $guide->getFirstMediaUrl('profiles');
+        }
+
+        return response()->json($guides);
+    }
 }
