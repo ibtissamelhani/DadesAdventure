@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class GuideController extends Controller
 {
-    //
 
     /**
      * Display a listing of the resource.
