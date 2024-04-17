@@ -72,8 +72,10 @@ class GuideController extends Controller
         $searchItem = $request->query('searchItem');
 
         $guides = User::with('city')
-        ->where('role', 'guide')
-        ->where('statu', '1');
+        ->whereHas('roles', function($query) {
+            $query->where('name', 'guide');
+        });
+       
 
         if ($searchItem) {
         $guides->where(function ($query) use ($searchItem) {
@@ -82,14 +84,15 @@ class GuideController extends Controller
                   ->orWhereHas('city', function ($query) use ($searchItem) {
                       $query->where('name', 'like', '%' . $searchItem . '%');
                   });
-        })->get();
+        });
         }
+        $guides = $guides->get();
 
         
         foreach ($guides as $guide) {
             $guide['profile'] = $guide->getFirstMediaUrl('profiles');
         }
 
-        return response()->json($guides);
+        return response()->json($guides)->header('Content-Type', 'application/json');
     }
 }

@@ -262,62 +262,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-
-    <script>
-        var ctx = document.getElementById('eventCountsChart').getContext('2d');
-        var eventCountsChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Published Events', 'Unpublished Events'],
-                datasets: [{
-                    label: 'Number of Events',
-                    data: [40, 60],
-                    backgroundColor: [
-                        'rgba(75, 192, 0, 0.2)',
-                        'rgba(255, 0, 54, 0.2)'
-
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 0, 1)',
-                        'rgba(255, 0, 54, 1)'
-
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>

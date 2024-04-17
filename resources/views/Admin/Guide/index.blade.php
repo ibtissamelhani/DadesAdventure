@@ -5,12 +5,8 @@
                 <h1 class="text-2xl font-bold text-cornell-red sm:text-3xl">Guides</h1>
             </div>
             <div class="relative">
-                <form action="" method="GET">
-                    @csrf
-                    <label for="Search" class="sr-only"> Search </label>
                     <input type="text" id="search-input" placeholder="Search for..." name="searchItem"
                         class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm" />
-
                     <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
                         <button type="submit" id="search-btn" class="text-gray-600 hover:text-red-600">
                             <span class="sr-only">Search</span>
@@ -22,7 +18,6 @@
                             </svg>
                         </button>
                     </span>
-                </form>
             </div>
 
             <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
@@ -53,4 +48,6 @@
             {{ $guides->links('pagination::tailwind') }}
         </div>
     </div>
+
+    <script src="{{asset('js/searchGuide.js')}}"></script>
 </x-admin.dashboard>
