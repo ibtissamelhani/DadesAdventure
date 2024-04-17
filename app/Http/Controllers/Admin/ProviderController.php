@@ -51,4 +51,50 @@ class ProviderController extends Controller
 
         return redirect()->route('admin.providers.index')->with('success', 'Provider added successfully.');;
     }
+
+    public function blockUser($providerId)
+    {
+        $user = User::findOrFail($providerId);
+        $user->status = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User blocked successfully.');
+    }
+
+    public function unblockUser($providerId)
+    {
+        $user = User::findOrFail($providerId);
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with('success', 'User unblocked successfully.');
+    }
+
+    public function searchProbider(Request $request)
+    {
+        $searchItem = $request->query('searchItem');
+
+        $providers = User::with('city')
+        ->whereHas('roles', function($query) {
+            $query->where('name', 'provider');
+        });
+       
+
+        if ($searchItem) {
+        $providers->where(function ($query) use ($searchItem) {
+            $query->where('first_name', 'like', '%' . $searchItem . '%')
+                  ->orWhere('last_name', 'like', '%' . $searchItem . '%')
+                  ->orWhereHas('city', function ($query) use ($searchItem) {
+                      $query->where('name', 'like', '%' . $searchItem . '%');
+                  });
+        });
+        }
+        $providers = $providers->get();
+
+        
+        foreach ($providers as $provider) {
+            $provider['profile'] = $provider->getFirstMediaUrl('profiles');
+        }
+
+        return response()->json($providers)->header('Content-Type', 'application/json');
+    }
 }

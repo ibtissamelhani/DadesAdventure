@@ -5,8 +5,7 @@
                 <h1 class="text-2xl font-bold text-green-500 sm:text-3xl">Activity Providers</h1>
             </div>
             <div class="relative">
-                <form action="" method="GET">
-                    @csrf
+                
                     <label for="Search" class="sr-only"> Search </label>
                     <input type="text" id="search-input" placeholder="Search for..." name="searchItem"
                         class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm" />
@@ -22,7 +21,7 @@
                             </svg>
                         </button>
                     </span>
-                </form>
+                </>
             </div>
 
             <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
@@ -53,4 +52,5 @@
             {{ $providers->links('pagination::tailwind') }}
         </div>
     </div>
+    <script src="{{asset('js/searchProvider.js')}}"></script>
 </x-admin.dashboard>

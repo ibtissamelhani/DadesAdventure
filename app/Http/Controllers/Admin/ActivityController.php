@@ -11,7 +11,7 @@ class ActivityController extends Controller
     public function index()
     {
         $pendingActivities = Activity::where('status','=', '0')->latest()->paginate(6);
-        $Activities = Activity::paginate(8);
+        $Activities = Activity::where('status','=', '1')->latest()->paginate(8);
         return view('Admin.Activity.index', compact('pendingActivities','Activities'));
     }
 

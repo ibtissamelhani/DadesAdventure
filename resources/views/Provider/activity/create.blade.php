@@ -86,7 +86,7 @@
                         <select name="guide_id" class="w-full rounded-lg border border-gray-200 p-3 text-sm">
                             <option selected disabled>select a guide</option>
                             @foreach ($guides as $guide)
-                                <option value="{{ $guide->id }}">{{ $guide->name }}</option>
+                                <option value="{{ $guide->id }}">{{ $guide->first_name }} {{ $guide->last_name }}</option>
                             @endforeach
                         </select>
                         @error('guide_id')

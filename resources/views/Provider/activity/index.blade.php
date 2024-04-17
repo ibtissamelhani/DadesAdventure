@@ -92,5 +92,9 @@
         @empty
             <li>No Activities Yet, Creat One!.</li>
         @endforelse
+        <div class="flex justify-center w-full mt-8 mx-auto">
+            {{ $proActivities->links('pagination::tailwind') }}
+        </div>
     </div>
+
 </x-provider.dashboard>

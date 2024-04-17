@@ -16,7 +16,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $proActivities = Auth::user()->providedActivities()->get();
+        $proActivities = Auth::user()->providedActivities()->paginate(9);
         return view('Provider.activity.index', compact('proActivities'));
     }
 
@@ -27,13 +27,14 @@ class ActivityController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
-        })->get();
-        $places = Place::all();
+        })->orderBy('first_name', 'asc')->get();
+        $places = Place::orderBy('name', 'asc')->get();
         return view('Provider.activity.create', compact('categories','guides','places'));
     }
+
 
     public function store(StoreActivityRequest $request)
     {
