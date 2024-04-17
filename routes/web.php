@@ -100,6 +100,7 @@ Route::get('/search', [GuideController::class, 'search'])->name('search');
 Route::resource('/providers', ProviderController::class);
 Route::put('/providers/{providerId}/block', [ProviderController::class, 'blockUser'])->name('provider.block');
 Route::put('/providers/{providerId}/unblock', [ProviderController::class, 'unblockUser'])->name('provider.unblock');
+Route::get('/searchProbider', [ProviderController::class, 'searchProbider'])->name('searchProbider');
 
 
 });
