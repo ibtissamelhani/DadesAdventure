@@ -39,13 +39,14 @@
 
             <div class="bg-blood-red/50 mt-6 py-10">
                 <form class="flex justify-around flex-wrap">
-                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="countries"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a country</option>
                         <option value="US">United States</option>
                         <option value="CA">Canada</option>
                         <option value="FR">France</option>
                         <option value="DE">Germany</option>
-                      </select>
+                    </select>
                     <label for="voice-search" class="sr-only">Search</label>
                     <div class="relative">
                         <input type="text" id="voice-search"
@@ -94,20 +95,22 @@
             </div>
             <div class="grid grid-cols-1 gap-2 mt-8 xl:mt-12 xl:gap-4 md:grid-cols-2 xl:grid-cols-4">
                 @forelse ($activities as $activity)
-                <a href="{{ route('details',$activity)}}"
-                class="overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
-                style="background-image:url('{{ asset($activity->getFirstMediaUrl('images')) }}')">
-                <div
-                        class="flex flex-col justify-center items-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
-                        <p class="mt-2 text-lg tracking-wider text-gray-100">{{$activity->date}}</p>
-                        <h1 class="mt-4 text-xl font-semibold text-white capitalize">{{$activity->category->name}}</h1>
-                        <h2 class="mt-4 text-xl font-semibold text-white capitalize">{{$activity->name}}</h2>
-                        <p class="mt-2 text-lg tracking-wider text-cornell-red font-semibold uppercase ">{{$activity->place->city->name}}</p>
-                        <p class="mt-2 text-lg tracking-wider text-white ">{{$activity->price}} $ /person</p>
-                    </div>
-                </a>
+                    <a href="{{ route('details', $activity) }}"
+                        class="overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
+                        style="background-image:url('{{ asset($activity->getFirstMediaUrl('images')) }}')">
+                        <div
+                            class="flex flex-col justify-center items-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                            <p class="mt-2 text-lg tracking-wider text-gray-100">{{ $activity->date }}</p>
+                            <h1 class="mt-4 text-xl font-semibold text-white capitalize">{{ $activity->category->name }}
+                            </h1>
+                            <h2 class="mt-4 text-xl font-semibold text-white capitalize">{{ $activity->name }}</h2>
+                            <p class="mt-2 text-lg tracking-wider text-cornell-red font-semibold uppercase ">
+                                {{ $activity->place->city->name }}</p>
+                            <p class="mt-2 text-lg tracking-wider text-white ">{{ $activity->price }} $ /person</p>
+                        </div>
+                    </a>
                 @empty
-                <li>No  Activities!.</li>
+                    <li>No Activities!.</li>
                 @endforelse
             </div>
         </div>

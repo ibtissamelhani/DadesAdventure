@@ -13,7 +13,7 @@
         <h1 class="text-gray-100 text-xl"><i class="fa-solid fa-chair"></i> places left : {{ $activity->capacity }}</h1>
         <h1 class="text-gray-100 text-xl"><i class="fa-solid fa-dollar-sign"></i> {{ $activity->price }} / person </h1>
         <h1 class="text-gray-100 text-xl"><i class="fa-solid fa-calendar-days"></i> date : {{ $activity->date }}</h1>
-        <h1 class="text-gray-100 text-xl"><i class="fa-regular fa-clock"></i> duration :</h1>
+        <h1 class="text-gray-100 text-xl"><i class="fa-regular fa-clock"></i> duration : {{ $activity->duration }} hours</h1>
     </div>
     <section class="bg-white dark:bg-gray-900">
         <div class="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">
