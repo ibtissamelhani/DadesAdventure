@@ -44,6 +44,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/details/{activity}', [HomeController::class, 'details'])->name('details');
 
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');

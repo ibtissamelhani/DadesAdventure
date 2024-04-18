@@ -13,4 +13,11 @@ class HomeController extends Controller
         $activities = Activity::where('status','1')->paginate(12);
         return view('welcome', compact('activities'));
     }
+
+    public function details(Activity $activity)
+    {
+        return view('Activity.details', compact('activity'));
+    }
+
+
 }

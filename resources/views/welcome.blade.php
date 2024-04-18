@@ -94,7 +94,8 @@
             </div>
             <div class="grid grid-cols-1 gap-2 mt-8 xl:mt-12 xl:gap-4 md:grid-cols-2 xl:grid-cols-4">
                 @forelse ($activities as $activity)
-                <div class="overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
+                <a href="{{ route('details',$activity)}}"
+                class="overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
                 style="background-image:url('{{ asset($activity->getFirstMediaUrl('images')) }}')">
                 <div
                         class="flex flex-col justify-center items-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
@@ -102,8 +103,9 @@
                         <h1 class="mt-4 text-xl font-semibold text-white capitalize">{{$activity->category->name}}</h1>
                         <h2 class="mt-4 text-xl font-semibold text-white capitalize">{{$activity->name}}</h2>
                         <p class="mt-2 text-lg tracking-wider text-cornell-red font-semibold uppercase ">{{$activity->place->city->name}}</p>
+                        <p class="mt-2 text-lg tracking-wider text-white ">{{$activity->price}} $ /person</p>
                     </div>
-                </div>
+                </a>
                 @empty
                 <li>No  Activities!.</li>
                 @endforelse
