@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price');
             $table->integer('capacity');
-            $table->unsignedInteger('left_places')->default(0);            
+            $table->unsignedInteger('reserved_places')->default(0);            
             $table->float('duration', 8, 2);
             $table->date('date');
             $table->integer('status')->default(0);

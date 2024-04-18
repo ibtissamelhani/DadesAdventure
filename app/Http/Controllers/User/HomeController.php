@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function details(Activity $activity)
     {
-        return view('Activity.details', compact('activity'));
+        return view('user.Activity.details', compact('activity'));
     }
 
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Provider\ActivityController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\ReservationController;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
@@ -119,5 +120,15 @@ Route::prefix('provider')->name('provider.')->group(function(){
 
     Route::resource('/activities', ActivityController::class);
 
+
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Route::prefix('user')->name('user.')->group(function(){
+
+    Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
 
 });
