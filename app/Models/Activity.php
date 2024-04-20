@@ -18,6 +18,8 @@ class Activity extends Model implements HasMedia
         'date',
         'capacity',
         'status',
+        'duration',
+        'left_places',
         'provider_id',
         'guide_id',
         'place_id',

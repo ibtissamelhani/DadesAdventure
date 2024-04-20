@@ -28,6 +28,7 @@ class UpdateActivityRequest extends FormRequest
         'date' => 'date|after_or_equal:today',
         'capacity' => 'integer|min:1',
         'provider_id' => 'exists:users,id',
+        'duration' => 'numeric|gt:0',
         'guide_id' => 'nullable|exists:users,id',
         'place_id' => 'exists:places,id',
         'category_id' => 'exists:categories,id',

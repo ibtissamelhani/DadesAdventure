@@ -25,7 +25,8 @@
 
                     <h3 class="mt-6 mb-3 text-lg font-medium text-cornell-red">Activity Provider :
                         {{ $activity->provider->first_name }} {{ $activity->provider->last_name }}</h3>
-                    <h3 class="mt-6 mb-3 text-lg font-medium text-delft-blue">N° places : {{ $activity->capacity }}</h3>
+                    <h3 class="mt-6 mb-3 text-lg font-medium text-delft-blue">Capacity : {{ $activity->capacity }}</h3>
+                    <h3 class="mb-3 text-lg font-medium text-delft-blue">Duration : {{ $activity->capacity }} Hours</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Price per Person: {{ $activity->price }} £</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Place: {{ $activity->place->name }}</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Guide:

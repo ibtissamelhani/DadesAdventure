@@ -27,6 +27,7 @@
                     <h3 class="mt-6 mb-3 text-lg font-medium text-delft-blue">N° places : {{$activity->capacity}}</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Price per Person: {{$activity->price}} £</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Place: {{$activity->place->name}}</h3>
+                    <h3 class="mb-3 text-lg font-medium text-delft-blue">duration: {{$activity->duration}} Hours</h3>
                     <h3 class="mb-3 text-lg font-medium text-delft-blue">Guide: {{ $activity->guide ? $activity->guide->first_name : '---'}} </h3>
                     <p class="mt-6 text-gray-600 dark:text-gray-300">date : {{$activity->date}}</p>
                     <p class="mb-3 text-gray-600 dark:text-gray-300">Category : {{$activity->category->name}}</p>
