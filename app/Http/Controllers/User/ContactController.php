@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactFormMail;
+use App\Models\Category;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -11,7 +13,9 @@ class ContactController extends Controller
 {
     public function showForm()
     {
-        return view('contact');
+        $experiences = Category::all();
+        $destinations = City::all();
+        return view('contact', compact('experiences','destinations'));
     }
 
     public function submitForm(Request $request)

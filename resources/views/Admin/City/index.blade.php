@@ -6,11 +6,14 @@
                 <div>
                     <div class="flex items-center gap-x-3">
                         <h2 class="text-lg font-medium text-gray-800 dark:text-white">City</h2>
-        
-                        <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{{$countCity}} cities</span>
+
+                        <span
+                            class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">{{ $countCity }}
+                            cities</span>
                     </div>
-        
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Cities serve as vibrant hubs where an array of activities cater to diverse interests and preferences.</p>
+
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Cities serve as vibrant hubs where an array
+                        of activities cater to diverse interests and preferences.</p>
                 </div>
 
                 <div class="flex items-center mt-4 gap-x-3">
@@ -50,7 +53,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.cities.store') }}">
+                                <form class="p-4 md:p-5" method="POST" action="{{ route('admin.cities.store') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                         <div class="col-span-2">
@@ -59,6 +62,16 @@
                                             <input type="text" name="name" id="name"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                 placeholder="Type city name" required="">
+                                        </div>
+                                        <div class="col-span-2">
+
+                                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                                for="file_input">Upload city image</label>
+                                            <input
+                                            name="image"
+                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                                id="file_input" type="file">
+
                                         </div>
                                     </div>
                                     <button type="submit"
@@ -193,7 +206,7 @@
                                                                 </div>
                                                                 <!-- Modal body -->
                                                                 <form class="p-4 md:p-5" method="POST"
-                                                                    action="{{ route('admin.cities.update', $city->id) }}">
+                                                                    action="{{ route('admin.cities.update', $city->id) }}" enctype="multipart/form-data">
                                                                     @method('put')
                                                                     @csrf
                                                                     <div class="grid gap-4 mb-4 grid-cols-2">
@@ -205,6 +218,16 @@
                                                                                 value="{{ $city->name }}"
                                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                                                 required="">
+                                                                        </div>
+                                                                        <div class="col-span-2">
+
+                                                                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                                                                for="file_input">Upload file</label>
+                                                                            <input
+                                                                            name="image"
+                                                                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                                                                id="file_input" type="file">
+                                
                                                                         </div>
 
                                                                     </div>

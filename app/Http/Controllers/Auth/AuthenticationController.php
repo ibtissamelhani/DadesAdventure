@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Category;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,9 @@ class AuthenticationController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        $experiences = Category::all();
+        $destinations = City::all();
+        return view('auth.login',compact('destinations','experiences'));
     }
 
      /**
