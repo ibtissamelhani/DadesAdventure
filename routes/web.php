@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Provider\ActivityController;
+use App\Http\Controllers\User\AboutUsController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ReservationController;
@@ -29,20 +30,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/contact', function () {
-//     return view('contact');
-// })->name('contact');
-
-Route::get('/AbouttUs', function () {
-    return view('about');
-})->name('about');
-
 Route::get('/dashboard', function () {
     return view('Admin.dashboard');
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/details/{activity}', [HomeController::class, 'details'])->name('details');
+
+
+Route::get('/AboutUs', [AboutUsController::class, 'showAboutPage'])->name('about');
+
 
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');

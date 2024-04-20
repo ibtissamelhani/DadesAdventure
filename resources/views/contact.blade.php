@@ -1,4 +1,4 @@
-<x-user.navbar>
+<x-user.navbar :experiences="$experiences" :destinations="$destinations">
     <section class=" bg-gray-50 px-6  mx-auto dark:bg-gray-900">
         <div class="container  px-6 py-12 mx-auto">
             <div>

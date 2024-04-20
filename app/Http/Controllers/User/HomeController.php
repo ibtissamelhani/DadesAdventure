@@ -14,8 +14,9 @@ class HomeController extends Controller
     {
         $experiences = Category::all();
         $destinations = City::all();
+        $cities = City::whereIn('name', ['Ouarzazate', 'Chefchaouen', 'Marrakech', 'Agadir'])->get();
         $activities = Activity::where('status','1')->paginate(12);
-        return view('welcome', compact('activities','destinations','experiences'));
+        return view('welcome', compact('activities','destinations','experiences','cities'));
     }
 
     public function details(Activity $activity)

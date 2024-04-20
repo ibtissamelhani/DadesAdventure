@@ -67,12 +67,11 @@ class CityController extends Controller
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $city->update($validatedData);
-        $city->addMediaFromRequest('image')->toMediaCollection('cities');
 
-        // if ($request->hasFile('image')) {
-        //     $city->clearMediaCollection('images');
-        //     $city->addMediaFromRequest('image')->toMediaCollection('cities');
-        // }
+        if ($request->hasFile('image')) {
+            $city->clearMediaCollection('images');
+            $city->addMediaFromRequest('image')->toMediaCollection('cities');
+        }
         return redirect()->route('admin.cities.index')->with('success','City updated successfully.');
     }
 

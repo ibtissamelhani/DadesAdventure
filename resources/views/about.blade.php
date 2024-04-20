@@ -1,4 +1,4 @@
-<x-user.navbar>
+<x-user.navbar :experiences="$experiences" :destinations="$destinations">
     <div class="w-full bg-center bg-cover lg:py-10 h-72" style="background-image: url('/images/about.jpg');">
         <div class="flex items-center justify-center w-full h-full bg-blood-red/50">
             <div class="text-center">
