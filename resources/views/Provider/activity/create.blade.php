@@ -122,8 +122,9 @@
 
                 <div>
                     <label class="sr-only" for="message">Description</label>
-                    <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" name="description" placeholder="Activity Description"
-                        rows="8" id="message">{{ old('description') }}</textarea>
+                        <textarea>
+                            Welcome to TinyMCE!
+                          </textarea>
                         @error('description')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -137,6 +138,14 @@
             </form>
         </div>
     </div>
+
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+      });
+    </script>
     <script>
         function previewImage(event) {
             const input = event.target;

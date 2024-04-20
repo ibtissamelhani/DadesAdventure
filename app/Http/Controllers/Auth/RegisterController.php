@@ -33,7 +33,7 @@ class RegisterController extends Controller
         $user->roles()->attach(2);
         Auth::login($user);
         event(new Registered($user));
-        return view('welcome');
+        return redirect()->route('home');
     }
     
 

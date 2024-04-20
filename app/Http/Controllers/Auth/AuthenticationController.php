@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
         if (Auth::user()->roles->contains('id', 1)) {
             return redirect()->route('dashboard');
         } else {
-            return redirect('/');
+            return redirect()->route('home');
         }
     }
 
@@ -41,6 +41,6 @@ class AuthenticationController extends Controller
     $request->session()->invalidate();
     $request->session()->regenerateToken();
 
-    return redirect('/');
+    return redirect()->route('home');
 }
 }
