@@ -15,6 +15,7 @@ use App\Http\Controllers\User\AboutUsController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ReservationController;
+use App\Http\Controllers\User\StripePaymentController;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
@@ -124,5 +125,8 @@ Route::prefix('provider')->name('provider.')->group(function(){
 Route::prefix('user')->name('user.')->group(function(){
 
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
+
+    Route::get('stripe/{activity}', [StripePaymentController::class, 'stripe'])->name('stripe');
+    Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
 
 });
