@@ -1,4 +1,4 @@
-<x-user.navbar>
+<x-user.navbar :experiences="$experiences" :destinations="$destinations">
     <section class="bg-white ">
         <div class="lg:grid lg:h-screen lg:grid-cols-12">
             <aside class="relative block lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">

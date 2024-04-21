@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->integer('nbr_place');
+            $table->decimal('amount', 10, 2);
             $table->foreignId('activity_id')
                 ->constrained()
                 ->onUpdate('cascade')

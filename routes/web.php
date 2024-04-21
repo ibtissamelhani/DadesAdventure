@@ -126,7 +126,4 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
 
-    Route::get('stripe/{activity}', [StripePaymentController::class, 'stripe'])->name('stripe');
-    Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
-
 });
