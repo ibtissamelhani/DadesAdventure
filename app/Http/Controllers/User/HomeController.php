@@ -21,7 +21,9 @@ class HomeController extends Controller
 
     public function details(Activity $activity)
     {
-        return view('user.Activity.details', compact('activity'));
+        $experiences = Category::all();
+        $destinations = City::all();
+        return view('user.Activity.details', compact('activity','destinations','experiences'));
     }
 
 
