@@ -7,6 +7,7 @@ use App\Models\Activity;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StripeController extends Controller
 {
@@ -43,14 +44,28 @@ class StripeController extends Controller
 
     public function success(Request $request)
     {
-        $activity = Activity::findOrFail($request->activity_id);
-        
-        $reservation = Reservation::create([
-            'user_id' => Auth::id(),
-            'activity_id' => $request->activity_id,
-            'nbr_place' => $request->number_of_places,
-            'amount' => $request->totalPrice,
-        ]);
-        return redirect()->route('details', $activity)->with('status', 'Booking Tickets Successfully!Check Your Email');
-    }
+        try{
+
+             DB::beginTransaction();
+            $activity = Activity::findOrFail($request->activity_id);
+            
+            $reservation = Reservation::create([
+                'user_id' => Auth::id(),
+                'activity_id' => $request->activity_id,
+                'nbr_place' => $request->number_of_places,
+                'amount' => $request->totalPrice,
+            ]);
+
+            $activity->decrementCapacity($request->number_of_places);
+            DB::commit();
+            return redirect()->route('details', $activity)->with('status', 'Booking Tickets Successfully!we will reach you soon.');
+    
+        }
+       
+       catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', 'An error occurred while processing your reservation.');
+
+       }
+}
 }

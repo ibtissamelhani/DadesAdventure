@@ -26,6 +26,13 @@ class Activity extends Model implements HasMedia
         'category_id',
     ];
 
+    public function decrementCapacity(int $numberOfPlaces)
+    {
+        $this->update([
+            'capacity' => $this->capacity - $numberOfPlaces,
+        ]);
+    }
+
     public function place()
     {
         return $this->belongsTo(Place::class);
