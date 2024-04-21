@@ -80,12 +80,12 @@
             </div>
 
             <div class="grid grid-cols-1 gap-1 p-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
-
+                <dt class="text-xl text-center text-red-500 font-semibold mb-4">Reserve Activity</dt>
                 <dd class="text-gray-700 sm:col-span-2">
 
                     <div class="max-w-md mx-auto mt-8">
                         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                            <h1 class="text-xl text-center text-red-500 font-semibold mb-4">Reserve Activity</h1>
+                            <h1 class="text-xl text-center text-red-500 font-semibold mb-4"></h1>
 
                             @if (session('success'))
                                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
@@ -93,7 +93,7 @@
                                     <span class="block sm:inline">{{ session('success') }}</span>
                                 </div>
                             @endif
-                            <form action="" method="POST">
+                            <form action="{{route('user.session')}}" method="POST">
                                 @csrf
                                 <div class="mb-4">
                                     <input name="activity_id" type="hidden" value="{{$activity->id}}" aria-label="disabled input"
@@ -109,14 +109,14 @@
                                     <div id="numberError" class="text-red-500 text-sm hidden">Please enter a number
                                         between 1 and 10.</div>
                                 </div>
-                                <div class="mb-4">
+                                {{-- <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2">
                                         Total Amount $
                                     </label>
                                     <input type="text" id="total_amount" name="total_amount" aria-label="disabled input"
                                         class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         value="amount..." disabled>
-                                </div>
+                                </div> --}}
                                
                                 <button id="card-button"
                                     class="bg-cornell-red hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
