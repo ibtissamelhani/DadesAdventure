@@ -1,4 +1,5 @@
 const numberInput = document.getElementById('Number_of_Places');
+const reserveButton = document.getElementById('reserve-button');
 
 numberInput.addEventListener('input', function () {
 

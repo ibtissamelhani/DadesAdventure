@@ -47,16 +47,27 @@
     </div>
     <div class="max-w-md mx-auto mt-8">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h1 class="text-xl font-semibold mb-4">Stripe Payment</h1>
+            <h1 class="text-xl text-center text-green-500 font-semibold mb-4">Payment</h1>
             
             @if (session('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <span class="block sm:inline">{{ session('success') }}</span>
             </div>
             @endif
-    
             <form action="" method="POST">
                 @csrf
+                <div class="mb-4">
+                    <label  class="block text-gray-700 text-sm font-bold mb-2">
+                        N° of places
+                    </label>
+                    <input type="text" id="disabled-input" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="Disabled input" disabled>
+                </div>
+                <div class="mb-4">
+                    <label  class="block text-gray-700 text-sm font-bold mb-2">
+                        Total Amount
+                    </label>
+                    <input type="text" id="disabled-input" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="Disabled input" disabled>
+                </div>
                 <div class="mb-4">
                     <label for="card-element" class="block text-gray-700 text-sm font-bold mb-2">
                         Credit or debit card
@@ -65,8 +76,8 @@
                     <!-- Used to display form errors -->
                     <div id="card-errors" role="alert" class="text-red-500 text-sm mt-2"></div>
                 </div>
-                <button id="card-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Pay $100
+                <button id="card-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Pay
                 </button>
             </form>
         </div>
