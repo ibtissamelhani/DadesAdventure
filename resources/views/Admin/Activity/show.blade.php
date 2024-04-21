@@ -57,6 +57,7 @@
                         </span>
                     @endif
                     <div class="flex items-center justify-between gap-8 mt-12 lg:justify-start">
+                        @if ($activity->status == 0)
                         <form action="{{ route('admin.activity.publish', $activity->id) }}" method="POST">
                             @csrf
                             <button
@@ -64,6 +65,7 @@
                                 Publish
                             </button>
                         </form>
+                        @endif
                         <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="post">
                             @method('DELETE')
                             @csrf

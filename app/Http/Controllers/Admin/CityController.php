@@ -31,8 +31,12 @@ class CityController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255', Rule::unique('cities')],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+
         ]);
         $city = City::create($validatedData);
+        $city->addMediaFromRequest('image')->toMediaCollection('cities');
+
         return redirect()->route('admin.cities.index')->with('success','City created successfully.');
     }
 
@@ -60,8 +64,14 @@ class CityController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255', Rule::unique('cities')],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $city->update($validatedData);
+
+        if ($request->hasFile('image')) {
+            $city->clearMediaCollection('images');
+            $city->addMediaFromRequest('image')->toMediaCollection('cities');
+        }
         return redirect()->route('admin.cities.index')->with('success','City updated successfully.');
     }
 

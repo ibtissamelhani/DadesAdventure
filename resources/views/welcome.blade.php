@@ -1,4 +1,4 @@
-<x-user.navbar>
+<x-user.navbar :experiences="$experiences" :destinations="$destinations">
     <section id="dynamic-background" class="bg-center  bg-cover bg-no-repeat  bg-gray-700/50 bg-blend-multiply">
         <div class="px-4 mx-auto max-w-screen text-center py-24 lg:py-56">
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl "> Welcome to
@@ -115,10 +115,10 @@
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-blood-red/5 dark:bg-gray-900">
         <div class="container px-6 py-10 max-w-screen-xl mx-auto">
             <div class="text-left">
-                <h1 class="text-2xl font-semibold text-gray-600 capitalize dark:text-white">Top destinations for your
+                <h1 class="text-3xl font-semibold text-cornell-red capitalize dark:text-white">Top destinations for your
                     next holiday</h1>
 
                 <p class="max-w-lg   mt-4 text-gray-800">
@@ -126,63 +126,22 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64"
-                        src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                        alt="">
+                @foreach ($cities as $city)
+                    <div class="lg:flex">
+                        <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+                            src="{{$city->getFirstMediaUrl('cities')}}"
+                            alt="photo">
 
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            How to use sticky note for problem solving
-                        </a>
+                        <div class="flex flex-col gap-4 py-6 lg:mx-6">
+                            <a href="#"
+                                class="text-xl font-semibold text-cornell-red hover:underline dark:text-white ">
+                                  {{$city->name}}
+                            </a>
 
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
+                            <span class="text-sm text-gray-500 dark:text-gray-300">Explore the colors, flavors, and stories that weave through these captivating destinations in North Africa</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64"
-                        src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                        alt="">
-
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#"
-                            class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            How to use sticky note for problem solving
-                        </a>
-
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
-                    </div>
-                </div>
-
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64"
-                        src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                        alt="">
-
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#"
-                            class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            Morning routine to boost your mood
-                        </a>
-
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 25 November 2020</span>
-                    </div>
-                </div>
-
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64"
-                        src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
-                        alt="">
-
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#"
-                            class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            All the features you want to know
-                        </a>
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 30 September 2020</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
