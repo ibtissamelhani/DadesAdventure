@@ -47,7 +47,7 @@
                             @enderror
                               </div>
 
-                        <div class="col-span-6">
+                        <div class="col-span-6 sm:col-span-3">
                             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
 
                             <input type="email" id="Email" name="email"
@@ -55,7 +55,16 @@
                                 @error('email')
                                 <p class="text-sm text-red-500">{{ $message }}</p>
                             @enderror
-                              </div>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="phone" class="block text-sm font-medium text-gray-700"> Phone </label>
+
+                            <input type="text" id="phone" name="phone"
+                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" value="{{ old('phone') }}"/>
+                                @error('phone')
+                                <p class="text-sm text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div>
 
                         <div class="col-span-6 sm:col-span-3">
                             <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
