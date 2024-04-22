@@ -122,9 +122,9 @@
 
                 <div>
                     <label class="sr-only" for="message">Description</label>
-                        <textarea>
+                        <textarea name="description">
                             Welcome to TinyMCE!
-                          </textarea>
+                        </textarea>
                         @error('description')
                         <p class="text-sm text-red-500">{{ $message }}</p>
                         @enderror
