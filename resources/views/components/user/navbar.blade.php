@@ -145,24 +145,28 @@
     {{ $slot }}
     <x-user.footer></x-user.footer>
     <script>
-        var images = [
-            '/images/1.jpg',
-            '/images/2.jpg',
-            '/images/3.jpg',
-            '/images/4.jpg',
-            '/images/5.jpg',
-            '/images/6.png',
-        ];
-
-        var currentIndex = 0;
-
-        function changeBackground() {
-            document.getElementById('dynamic-background').style.backgroundImage = 'url("' + images[currentIndex] + '")';
-            currentIndex = (currentIndex + 1) % images.length;
-        }
-
-        setInterval(changeBackground, 6000);
-    </script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const backgrounds = [
+                'url("/images/1.jpg")',
+                'url("/images/2.jpg")',
+                'url("/images/3.jpg")',
+                'url("/images/4.jpg")',
+                'url("/images/5.jpg")',
+                'url("/images/6.png")',
+            ];
+    
+            let currentBackgroundIndex = 0;
+            const backgroundSlider = document.getElementById('dynamic-background');
+    
+            function changeBackground() {
+                backgroundSlider.style.transition = "background-image 1s ease-in";
+                backgroundSlider.style.backgroundImage = backgrounds[currentBackgroundIndex];
+                currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+            }
+    
+            setInterval(changeBackground, 5000);
+        });
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 

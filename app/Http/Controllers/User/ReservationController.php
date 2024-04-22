@@ -16,4 +16,6 @@ class ReservationController extends Controller
         $destinations = City::all();
         return view('User.reservation.reservation',compact('activity','experiences','destinations'));
     }
+
+    
 }
