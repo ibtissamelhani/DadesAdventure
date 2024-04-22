@@ -35,8 +35,11 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255', Rule::unique('categories')],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $category = Category::create($validatedData);
+        $category->addMediaFromRequest('image')->toMediaCollection('categories');
+
         return redirect()->route('admin.categories.index')->with('success','Category created successfully.');
     }
 
@@ -59,9 +62,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255', Rule::unique('categories')],
+            'name' => ['required', 'string', 'max:255'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $category->update($validatedData);
+
+        if ($request->hasFile('image')) {
+            $category->clearMediaCollection('images');
+            $category->addMediaFromRequest('image')->toMediaCollection('categories');
+        }
         return redirect()->route('admin.categories.index')->with('success','Category updated successfully.');
     }
 
