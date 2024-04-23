@@ -28,7 +28,6 @@ class StoreGuideRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'required|string',
             'city_id' => 'required|exists:cities,id',
-            'password' => 'required|string|min:8',
             'spoken_languages' => 'required|array|min:1',
             'spoken_languages.*' => 'required|string|in:English,Spanish,Chinese,Frensh,Arabic',
         ];

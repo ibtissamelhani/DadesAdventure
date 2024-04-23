@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class GuideController extends Controller
 {
@@ -36,6 +37,7 @@ class GuideController extends Controller
 
     public function store(StoreGuideRequest $request){
 
+        $password = Str::random(8);
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -43,12 +45,12 @@ class GuideController extends Controller
             'phone' => $request->phone,
             'city_id' => $request->city_id,
             'spoken_languages' => implode(',', $request->spoken_languages),
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($password),
         ]);
 
         $user->roles()->attach(3);
         $user->addMediaFromRequest('profile')->toMediaCollection('profiles');
-        Mail::to($user->email)->send(new CreateProfileMail($user));
+        Mail::to($user->email)->send(new CreateProfileMail($user,$password));
 
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }

@@ -24,10 +24,11 @@
             color: #b41212;
             font-size: 24px;
             margin-bottom: 20px;
+            margin-left: 32px; 
         }
 
         .email-container p {
-            color: #0d0a0a;
+            color: #1c1616;
             font-size: 16px;
             line-height: 1.5;
         }
@@ -35,10 +36,12 @@
         .email-container ul {
             list-style: none;
             padding: 0;
+            margin-bottom: 16px;
+            margin-top: 16px;
         }
 
         .email-container ul li {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .email-container ul li strong {
@@ -54,15 +57,30 @@
 <body>
     <section class="email-container">
         <main>
-            <h2>New Contact Form Submission</h2>
-    
-            <p>
-                You have received a new message through the contact form on your website. Here are the details:
-            </p>
+
+            <h2>Welcome to DadesAdventures!</h2>
             <ul>
-                <li><strong>Name:</strong> {{ $user['first_name'] }} {{ $user['last_name'] }}</li>
+                <li><strong>Message:</strong> <br>
+
+
+
+                    Dear {{ $user['first_name'] }} {{ $user['last_name'] }}<br>
+
+                    Welcome to our community! You're the heart of our adventures, sharing stories and creating
+                    unforgettable memories.
+
+                    Your expertise and passion make each journey special. We're here to support you every step of the
+                    way.<br>
+
+                    Let's inspire exploration together!<br>
+
+                    Warm regards,<br>
+
+                    [Ibtissam of DadesAdventures]</li>
+                <li><strong>Authentication Credentials </strong></li>
+
                 <li><strong>Email:</strong> {{ $user['email'] }}</li>
-                <li><strong>Message:</strong> <br>your officially become a guide in our website </li>
+                <li><strong>Password:</strong> {{ $password }}</li>
             </ul>
         </main>
     </section>

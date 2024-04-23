@@ -28,7 +28,6 @@ class StoreProviderRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'required|string',
             'city_id' => 'required|exists:cities,id',
-            'password' => 'required|string|min:8',
         ];
     }
 }
