@@ -51,7 +51,7 @@
                     <div class="relative">
                         <input type="text" id="voice-search"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search Mockups, Logos, Design Templates..." required />
+                            placeholder="Search..." required />
                     </div>
 
                     <div date-rangepicker class="flex items-center flex-wrap">
