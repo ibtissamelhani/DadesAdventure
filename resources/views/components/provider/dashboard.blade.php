@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tiny.cloud/1/tizc1wnsdfx9km4jrzlf453ngej2ysq53hkvbqxgkluz6hht/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/tizc1wnsdfx9km4jrzlf453ngej2ysq53hkvbqxgkluz6hht/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -103,7 +104,7 @@
                 </li>
             </ul>
             <li>
-                <a href="{{route('provider.activities.index')}}"
+                <a href="{{ route('provider.activities.index') }}"
                     class="flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-gray-100/20 dark:hover:bg-gray-700 dark:text-white group">
                     <span
                         class="material-symbols-outlined flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white">
@@ -122,12 +123,39 @@
                     <span class="ms-3">Reservations</span>
                 </a>
             </li>
-           
+
             </ul>
 
         </div>
 
     </aside>
+    @if ($errors->any())
+        <div id="alert-3"
+            class="message-alert fixed top-28 right-5 lg:right-32 border border-red-300 max-w-88 z-50 flex items-center shadow-md hover:shadow-lg p-4 mb-4 text-red-800 rounded-lg bg-red-100"
+            role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ms-3 text-sm pr-4 font-medium">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </div>
+            <button type="button"
+                class="ms-auto shadow -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8"
+                data-dismiss-target="#alert-3" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    @endif
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3  gap-4 mb-4">
@@ -206,7 +234,7 @@
         </script>
     @endif
 
-
+    <script src="{{ asset('alert.js') }}"></script>
 </body>
 
 </html>
