@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Category;
 use App\Models\City;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,9 +14,13 @@ class HomeController extends Controller
     public function index()
     {
         $experiences = Category::all();
+
         $destinations = City::all();
+
         $cities = City::whereIn('name', ['Ouarzazate', 'Chefchaouen', 'Marrakech', 'Agadir'])->get();
-        $activities = Activity::where('status','1')->latest()->paginate(12);
+
+        $activities = Activity::where('status','1') ->whereDate('date', '>=', Carbon::today())->latest()->paginate(12);
+
         return view('welcome', compact('activities','destinations','experiences','cities'));
     }
 
@@ -51,7 +56,10 @@ class HomeController extends Controller
                 $activities->whereBetween('date', [$from, $to]);
             }    
             $activities= $activities->get();
-        return $activities;
+            foreach ($activities as $activity) {
+                $activity['image'] = $activity->getFirstMediaUrl('images');
+            }
+        return response()->json($activities)->header('Content-Type', 'application/json');
     }
 
 
