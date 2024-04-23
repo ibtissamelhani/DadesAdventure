@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGuideRequest;
+use App\Mail\CreateProfileMail;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class GuideController extends Controller
 {
@@ -46,6 +48,7 @@ class GuideController extends Controller
 
         $user->roles()->attach(3);
         $user->addMediaFromRequest('profile')->toMediaCollection('profiles');
+        Mail::to($user->email)->send(new CreateProfileMail($user));
 
         return redirect()->route('admin.guides.index')->with('success', 'Guide added successfully.');;
     }
