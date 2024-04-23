@@ -58,7 +58,7 @@ class ProviderController extends Controller
         $user->status = 0;
         $user->save();
 
-        return redirect()->back()->with('success', 'User blocked successfully.');
+        return redirect()->back()->with('success', 'Provider blocked successfully.');
     }
 
     public function unblockUser($providerId)
@@ -66,7 +66,7 @@ class ProviderController extends Controller
         $user = User::findOrFail($providerId);
         $user->status = 1;
         $user->save();
-        return redirect()->back()->with('success', 'User unblocked successfully.');
+        return redirect()->back()->with('success', 'Provider unblocked successfully.');
     }
 
     public function searchProbider(Request $request)
