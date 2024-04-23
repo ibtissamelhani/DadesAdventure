@@ -37,21 +37,20 @@
                 </p>
             </div>
 
-            <div class="bg-blood-red/50 mt-6 py-10">
-                <form class="flex justify-around flex-wrap">
-                    <select id="countries"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose a country</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
+            <div class="mt-6">
+                <form id="form"  class="flex justify-center gap-5 flex-wrap">
+                    <select id="category" name="category"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option disabled selected>Choose a category</option>
+                        @foreach ($experiences as $experience)
+                        <option value="{{$experience->id}}" >{{$experience->name}}</option>
+                        @endforeach
                     </select>
                     <label for="voice-search" class="sr-only">Search</label>
                     <div class="relative">
-                        <input type="text" id="voice-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search Mockups, Logos, Design Templates..." required />
+                        <input type="text" id="title" name="title"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Search..."  />
                     </div>
 
                     <div date-rangepicker class="flex items-center flex-wrap">
@@ -63,8 +62,8 @@
                                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
-                            <input name="start" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            <input name="from" id="from" type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date start">
                         </div>
                         <span class="mx-4 text-gray-500">to</span>
@@ -76,14 +75,14 @@
                                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
-                            <input name="end" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            <input name="to" id="to" type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date end">
                         </div>
                     </div>
 
-                    <button type="submit"
-                        class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <button type="submit"  id="submit"
+                        class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blood-red rounded-lg border border-blood-red hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">
                         <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,8 +94,8 @@
             </div>
             <div class="grid grid-cols-1 gap-2 mt-8 xl:mt-12 xl:gap-4 md:grid-cols-2 xl:grid-cols-4">
                 @forelse ($activities as $activity)
-                    <a href="{{ route('details', $activity) }}"
-                        class="overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
+                    <a href="{{ route('details', $activity) }}" 
+                        class="activityWrapper overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
                         style="background-image:url('{{ asset($activity->getFirstMediaUrl('images')) }}')">
                         <div
                             class="flex flex-col justify-center items-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
@@ -112,6 +111,9 @@
                 @empty
                     <li>No Activities!.</li>
                 @endforelse
+                <div class="flex w-full mt-8">
+                    {{ $activities->links('pagination::tailwind') }}
+                </div>
             </div>
         </div>
     </section>
@@ -145,5 +147,5 @@
             </div>
         </div>
     </section>
-
+<script src="{{asset('js/searchActivity.js')}}"></script>
 </x-user.navbar>

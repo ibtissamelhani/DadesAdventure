@@ -22,15 +22,25 @@ class ActivityController extends Controller
 
     public function publishActivity(Activity $activity)
     {
-        $activity->update(['status'=> 1]);
-        return redirect()->route('admin.activities.index');
+        try {
+            $activity->update(['status' => 1]);
+
+            return redirect()->route('admin.activities.index')->with('success', 'Activity published successfully.');
+        } catch (\Exception $e) {
+
+            return redirect()->route('admin.activities.index')->with('error', 'Failed to publish activity.');
+        }
     }
 
     public function destroy(Activity $activity)
     {
-        $activity->delete();
-        return redirect()->route('admin.activities.index')
-            ->with('success', 'Activity deleted successfully.');
+            try {
+                    $activity->delete();
+                return redirect()->route('admin.activities.index')
+                ->with('success', 'Activity deleted successfully.');
+            } catch (\Exception $e) {
+                    return redirect()->route('admin.activities.index')->with('error', 'Failed to delete activity.');
+                }
     }
 
 
