@@ -109,14 +109,6 @@
                                     <div id="numberError" class="text-red-500 text-sm hidden">Please enter a number
                                         between 1 and 10.</div>
                                 </div>
-                                {{-- <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2">
-                                        Total Amount $
-                                    </label>
-                                    <input type="text" id="total_amount" name="total_amount" aria-label="disabled input"
-                                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        value="amount..." disabled>
-                                </div> --}}
                                
                                 <button id="card-button"
                                     class="bg-cornell-red hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

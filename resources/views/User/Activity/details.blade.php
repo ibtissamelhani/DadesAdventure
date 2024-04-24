@@ -98,28 +98,57 @@
                 treks through the Atlas Mountains to immersive cultural tours of ancient Berber villages.
             </p>
 
-            <div class="grid grid-cols-1 gap-8 mx-auto mt-8 lg:grid-cols-2 xl:mt-10 max-w-7xl">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    @forelse ($reviews as $review)
+                        
+                    <div class="swiper-slide">
+                        <div class=" mx-auto mt-8 xl:mt-10 max-w-2xl">
+                            <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
+                                <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                    “{{$review->description}}”.
+                                </p>
 
+                                <div class="flex items-center mt-6">
+                                    <img class="object-cover rounded-full w-14 h-14"
+                                        src="{{ $review->user->getFirstMediaUrl('profiles') }}"
+                                        alt="">
 
-                <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
-                    <p class="leading-loose text-gray-500 dark:text-gray-300">
-                        “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus libero ad
-                        tempora doloribus expedita laborum saepe voluptas perferendis delectus assumenda rerum, culpa
-                        aperiam dolorum, obcaecati corrupti aspernatur a.”.
-                    </p>
-
-                    <div class="flex items-center mt-6">
-                        <img class="object-cover rounded-full w-14 h-14"
-                            src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                            alt="">
-
-                        <div class="mx-4">
-                            <h1 class="font-semibold text-blue-500">Mia Brown</h1>
-                            <span class="text-sm text-gray-500 dark:text-gray-300">Marketing Manager at Stech</span>
+                                    <div class="mx-4">
+                                        <h1 class="font-semibold text-blue-500">{{ $review->user->first_name}} {{ $review->user->last_name}}</h1>
+                                        <span class="text-sm text-gray-500 dark:text-gray-300">client at DadesAdventures</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    @empty
+                        <p>---</p>
+                    @endforelse
                 </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </x-user.navbar>

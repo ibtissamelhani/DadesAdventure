@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +19,8 @@ class HomeController extends Controller
 
         $destinations = City::all();
 
+        $reviews = Review::all();
+
         $topCities = City::leftJoin(DB::raw('(SELECT places.city_id, COUNT(places.id) AS places_count
             FROM places
             LEFT JOIN activities ON places.id = activities.place_id
@@ -29,14 +32,17 @@ class HomeController extends Controller
 
         $activities = Activity::where('status','1') ->whereDate('date', '>=', Carbon::today())->latest()->paginate(12);
 
-        return view('welcome', compact('activities','destinations','experiences','topCities'));
+        return view('welcome', compact('activities','destinations','experiences','topCities','reviews'));
     }
 
     public function details(Activity $activity)
     {
         $experiences = Category::all();
         $destinations = City::all();
-        return view('user.Activity.details', compact('activity','destinations','experiences'));
+
+        $reviews = Review::all();
+
+        return view('user.Activity.details', compact('activity','destinations','experiences','reviews'));
     }
 
 

@@ -159,92 +159,32 @@
             </p>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
+                    @forelse ($reviews as $review)
+                        
                     <div class="swiper-slide">
-                        <div class="grid grid-cols-1 gap-8 mx-auto mt-8 lg:grid-cols-2 xl:mt-10 max-w-7xl">
+                        <div class=" mx-auto mt-8 xl:mt-10 max-w-2xl">
                             <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
                                 <p class="leading-loose text-gray-500 dark:text-gray-300">
-                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus
-                                    libero ad tempora doloribus expedita laborum saepe voluptas perferendis delectus
-                                    assumenda rerum, culpa aperiam dolorum, obcaecati corrupti aspernatur a.”.
+                                    “{{$review->description}}”.
                                 </p>
 
                                 <div class="flex items-center mt-6">
                                     <img class="object-cover rounded-full w-14 h-14"
-                                        src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                        src="{{ $review->user->getFirstMediaUrl('profiles') }}"
                                         alt="">
 
                                     <div class="mx-4">
-                                        <h1 class="font-semibold text-blue-500">Robbert</h1>
-                                        <span class="text-sm text-gray-500 dark:text-gray-300">CTO, Robert
-                                            Consultency</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
-                                <p class="leading-loose text-gray-500 dark:text-gray-300">
-                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus
-                                    libero ad tempora doloribus expedita laborum saepe voluptas perferendis delectus
-                                    assumenda rerum, culpa aperiam dolorum, obcaecati corrupti aspernatur a.”.
-                                </p>
-
-                                <div class="flex items-center mt-6">
-                                    <img class="object-cover rounded-full w-14 h-14"
-                                        src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                        alt="">
-
-                                    <div class="mx-4">
-                                        <h1 class="font-semibold text-blue-500">Mia Brown</h1>
-                                        <span class="text-sm text-gray-500 dark:text-gray-300">Marketing Manager at
-                                            Stech</span>
+                                        <h1 class="font-semibold text-blue-500">{{ $review->user->first_name}} {{ $review->user->last_name}}</h1>
+                                        <span class="text-sm text-gray-500 dark:text-gray-300">client at DadesAdventures</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="grid grid-cols-1 gap-8 mx-auto mt-8 lg:grid-cols-2 xl:mt-10 max-w-7xl">
-                            <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
-                                <p class="leading-loose text-gray-500 dark:text-gray-300">
-                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus
-                                    libero ad tempora doloribus expedita laborum saepe voluptas perferendis delectus
-                                    assumenda rerum, culpa aperiam dolorum, obcaecati corrupti aspernatur a.”.
-                                </p>
 
-                                <div class="flex items-center mt-6">
-                                    <img class="object-cover rounded-full w-14 h-14"
-                                        src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                        alt="">
-
-                                    <div class="mx-4">
-                                        <h1 class="font-semibold text-blue-500">Robbert</h1>
-                                        <span class="text-sm text-gray-500 dark:text-gray-300">CTO, Robert
-                                            Consultency</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
-                                <p class="leading-loose text-gray-500 dark:text-gray-300">
-                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam ducimus
-                                    libero ad tempora doloribus expedita laborum saepe voluptas perferendis delectus
-                                    assumenda rerum, culpa aperiam dolorum, obcaecati corrupti aspernatur a.”.
-                                </p>
-
-                                <div class="flex items-center mt-6">
-                                    <img class="object-cover rounded-full w-14 h-14"
-                                        src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                        alt="">
-
-                                    <div class="mx-4">
-                                        <h1 class="font-semibold text-blue-500">Mia Brown</h1>
-                                        <span class="text-sm text-gray-500 dark:text-gray-300">Marketing Manager at
-                                            Stech</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
+                        <p>---</p>
+                    @endforelse
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -267,20 +207,20 @@
                 </div>
 
                 <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                    <form action="#" class="space-y-4">
-
+                    <form action="{{ route('user.reviews.store') }}" method="POST" class="space-y-4">
+                        @csrf
                         <div>
-                            <label class="sr-only" for="email">Email</label>
-                            <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Email address"
-                                type="hidden" id="email" />
+                            <input class="w-full rounded-lg border-gray-200 p-3 text-sm" type="hidden"
+                                id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
                         </div>
-
                         <div>
                             <label class="sr-only" for="message">Review</label>
-
-                            <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Review" rows="8" id="message" required></textarea>
+                            <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Review" rows="8" id="message"
+                                name="description">{{ old('description') }}</textarea>
+                            @error('description')
+                                <p class="text-sm text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
-
                         <div class="mt-4">
                             <button type="submit"
                                 class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto">

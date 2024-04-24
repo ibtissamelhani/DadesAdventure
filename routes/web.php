@@ -17,6 +17,7 @@ use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ReservationController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripePaymentController;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
@@ -131,6 +132,7 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/success', 'App\Http\Controllers\User\StripeController@success')->name('success');
     Route::get('/booking', [BookingController::class, 'index'])->name('booking');
     Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+    Route::resource('/reviews',ReviewController::class);
 
 });
 
