@@ -21,9 +21,16 @@ class BookingController extends Controller
             $bookings[] = [
                 'title' =>' ---- '.$reservation->activity->category->name.' ---- '.$reservation->activity->name. ' city: ' .$reservation->activity->place->city->name,
                 'start' => $reservation->activity->date, 
-                'end' => $reservation->activity->date,     
+                'end' => $reservation->activity->date, 
+                'id'   => $reservation->id
             ];
             }
             return view('User.reservation.bookings',compact('bookings'));
+    }
+
+    public function show($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        return view('User.reservation.show',compact('reservation'));
     }
 }

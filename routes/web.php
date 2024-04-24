@@ -130,6 +130,8 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::post('/session', 'App\Http\Controllers\User\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\User\StripeController@success')->name('success');
     Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+    Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
