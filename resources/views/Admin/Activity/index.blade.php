@@ -96,6 +96,9 @@
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     provider
                                 </th>
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    city
+                                </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Date</th>
 
@@ -122,6 +125,11 @@
                                     <div>
                                         <h4 class="text-gray-700 dark:text-gray-200">{{$Activitie->provider->first_name}}</h4>
                                         <p class="text-gray-500 dark:text-gray-400">{{$Activitie->provider->last_name}}</p>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <p class="flex items-center justify-center w-6 h-6 -mx-1 text-xs text-gray-600 ">{{$Activitie->place->city->name}}</p>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">

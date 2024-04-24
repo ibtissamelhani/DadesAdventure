@@ -128,7 +128,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-                @foreach ($cities as $city)
+                @foreach ($topCities as $city)
                     <div class="lg:flex">
                         <img class="object-cover w-full h-56 rounded-lg lg:w-64"
                             src="{{$city->getFirstMediaUrl('cities')}}"
