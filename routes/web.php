@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Provider\ActivityController;
 use App\Http\Controllers\User\AboutUsController;
+use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ReservationController;
@@ -128,6 +129,7 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
     Route::post('/session', 'App\Http\Controllers\User\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\User\StripeController@success')->name('success');
+    Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
