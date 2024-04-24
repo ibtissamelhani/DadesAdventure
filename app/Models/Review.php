@@ -11,7 +11,7 @@ class Review extends Model
 
     protected $fillable = [
         'description',
-        'activity_id',
+       
         'user_id',
     ];
 
@@ -20,8 +20,5 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function activity()
-    {
-        return $this->belongsTo(Activity::class);
-    }
+    
 }

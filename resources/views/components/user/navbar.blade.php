@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @vite('resources/css/app.css')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        @vite('resources/css/app.css')
     <title>DadesAdventures</title>
 </head>
 
@@ -101,21 +102,23 @@
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                 data-dropdown-placement="bottom">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->getMedia('profiles')->isNotEmpty() ? Auth::user()->getFirstMediaUrl('profiles') : asset('images/profile.jpg') }}"
+                                <img class="w-8 h-8 rounded-full"
+                                    src="{{ Auth::user()->getMedia('profiles')->isNotEmpty() ? Auth::user()->getFirstMediaUrl('profiles') : asset('images/profile.jpg') }}"
                                     alt="user photo">
                             </button>
                             <!-- Dropdown menu -->
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                                 id="user-dropdown">
                                 <div class="px-4 py-3">
-                                    <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->first_name }}
+                                    <span
+                                        class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->first_name }}
                                         {{ Auth::user()->last_name }}</span>
                                     <span
                                         class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
                                     <li>
-                                        <a href="{{ route('user.booking')}}"
+                                        <a href="{{ route('user.booking') }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My
                                             Account</a>
                                     </li>
@@ -143,36 +146,36 @@
         </div>
     </nav>
     @if ($errors->any())
-                    <div id="alert-3"
-                        class="message-alert fixed top-28 right-5 lg:right-32 border border-red-300 max-w-88 z-50 flex items-center shadow-md hover:shadow-lg p-4 mb-4 text-red-800 rounded-lg bg-red-100"
-                        role="alert">
-                        <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                        </svg>
-                        <span class="sr-only">Info</span>
-                        <div class="ms-3 text-sm pr-4 font-medium">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </div>
-                        <button type="button"
-                            class="ms-auto shadow -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8"
-                            data-dismiss-target="#alert-3" aria-label="Close">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                        </button>
-                    </div>
-                @endif
+        <div id="alert-3"
+            class="message-alert fixed top-28 right-5 lg:right-32 border border-red-300 max-w-88 z-50 flex items-center shadow-md hover:shadow-lg p-4 mb-4 text-red-800 rounded-lg bg-red-100"
+            role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ms-3 text-sm pr-4 font-medium">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </div>
+            <button type="button"
+                class="ms-auto shadow -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8"
+                data-dismiss-target="#alert-3" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    @endif
     {{ $slot }}
     <x-user.footer></x-user.footer>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const backgrounds = [
                 'url("/images/1.jpg")',
                 'url("/images/2.jpg")',
@@ -181,19 +184,19 @@
                 'url("/images/5.jpg")',
                 'url("/images/6.png")',
             ];
-    
+
             let currentBackgroundIndex = 0;
             const backgroundSlider = document.getElementById('dynamic-background');
-    
+
             function changeBackground() {
                 backgroundSlider.style.transition = "background-image 1s ease-in";
                 backgroundSlider.style.backgroundImage = backgrounds[currentBackgroundIndex];
                 currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
             }
-    
+
             setInterval(changeBackground, 5000);
         });
-        </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
@@ -213,7 +216,8 @@
             }, {{ session('delay', 0) }});
         </script>
     @endif
-    <script src="{{asset('alert.js')}}"></script>
+    <script src="{{ asset('alert.js') }}"></script>
+    
 </body>
 
 </html>
