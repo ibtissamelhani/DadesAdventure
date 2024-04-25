@@ -1,4 +1,4 @@
-<x-admin.dashboard>
+<x-admin.dashboard :totalActivities="$totalActivities" :totalUsers="$totalUsers" :totalReservation="$totalReservation">
     <div class="  mb-4 rounded bg-gray-100 dark:bg-gray-800">
 
         <section class="container p-12 mx-auto">

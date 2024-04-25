@@ -1,4 +1,4 @@
-<x-admin.dashboard>
+<x-admin.dashboard :totalActivities="$totalActivities" :totalUsers="$totalUsers" :totalReservation="$totalReservation">
     <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div class="sm:flex sm:items-center sm:justify-between md:flex md:items-center md:justify-between flex-wrap">
             <div class="text-center sm:text-left">

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGuideRequest;
 use App\Mail\CreateProfileMail;
+use App\Models\Activity;
 use App\Models\City;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,19 +22,30 @@ class GuideController extends Controller
      */
     public function index()
     {
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+        
         $guides = User::whereHas('roles', function ($query) {
             $query->where('name', 'guide');
         })->paginate(8);
         
-        return view ('admin.guide.index', compact('guides'));
+        return view ('admin.guide.index', compact('guides','totalActivities','totalUsers','totalReservation'));
     }
 
     public function create(){
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $cities = City::all();
-        return view ('admin.guide.create',compact('cities'));
+        return view ('admin.guide.create',compact('cities','totalActivities','totalUsers','totalReservation'));
     }
     public function show(User $guide){
-        return view ('admin.guide.show',compact('guide'));
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+        return view ('admin.guide.show',compact('guide','totalActivities','totalUsers','totalReservation'));
     }
 
     public function store(StoreGuideRequest $request){

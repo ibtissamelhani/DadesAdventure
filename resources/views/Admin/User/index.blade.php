@@ -1,4 +1,4 @@
-<x-admin.dashboard>
+<x-admin.dashboard :totalActivities="$totalActivities" :totalUsers="$totalUsers" :totalReservation="$totalReservation">
     <section class="container px-4 mx-auto">
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>

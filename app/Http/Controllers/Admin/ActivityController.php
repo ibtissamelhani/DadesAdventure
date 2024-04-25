@@ -4,20 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
     public function index()
     {
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $pendingActivities = Activity::where('status','=', '0')->latest()->paginate(6);
         $Activities = Activity::where('status','=', '1')->latest()->paginate(8);
-        return view('Admin.Activity.index', compact('pendingActivities','Activities'));
+        return view('Admin.Activity.index', compact('pendingActivities','Activities','totalActivities','totalUsers','totalReservation'));
     }
 
     public function show(Activity $activity)
     {
-        return view('Admin.Activity.show',compact('activity'));
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+        return view('Admin.Activity.show',compact('activity','totalActivities','totalUsers','totalReservation'));
     }
 
     public function publishActivity(Activity $activity)

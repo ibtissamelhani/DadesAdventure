@@ -1,4 +1,4 @@
-<x-admin.dashboard>
+<x-admin.dashboard :totalActivities="$totalActivities" :totalUsers="$totalUsers" :totalReservation="$totalReservation">
     <div class="  mb-4 rounded bg-gray-100 dark:bg-gray-800">
         <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Pending <span class="text-cornell-red">activities</span></h1>
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4 p-4">

@@ -41,7 +41,7 @@
                 <form id="form" class="flex justify-center gap-5 flex-wrap">
                     <select id="category" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option disabled selected>Choose a category</option>
+                        <option disabled selected value="">Choose a category</option>
                         @foreach ($experiences as $experience)
                             <option value="{{ $experience->id }}">{{ $experience->name }}</option>
                         @endforeach
@@ -53,31 +53,14 @@
                             placeholder="Search..." />
                     </div>
 
-                    <div date-rangepicker class="flex items-center flex-wrap">
+                    <div class="flex items-center flex-wrap">
                         <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                </svg>
-                            </div>
-                            <input name="from" id="from" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date start">
+                            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="date" id="from" name="from"  />
                         </div>
                         <span class="mx-4 text-gray-500">to</span>
                         <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                </svg>
-                            </div>
-                            <input name="to" id="to" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date end">
+
+                            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="date" id="to" name="to" />
                         </div>
                     </div>
 
@@ -92,10 +75,10 @@
                 </form>
 
             </div>
-            <div class="grid grid-cols-1 gap-2 mt-8 xl:mt-12 xl:gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div class="grid grid-cols-1 gap-2 mt-8 xl:mt-12 xl:gap-4 md:grid-cols-2 xl:grid-cols-4" id="activityWrapper">
                 @forelse ($activities as $activity)
-                    <a href="{{ route('details', $activity) }}"
-                        class="activityWrapper overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
+                    <a href="{{ route('details', $activity) }}" 
+                        class=" overflow-hidden bg-cover rounded-lg  cursor-pointer h-96 group"
                         style="background-image:url('{{ asset($activity->getFirstMediaUrl('images')) }}')">
                         <div
                             class="flex flex-col justify-center items-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
@@ -134,7 +117,7 @@
                             src="{{ $city->getFirstMediaUrl('cities') }}" alt="photo">
 
                         <div class="flex flex-col gap-4 py-6 lg:mx-6">
-                            <a href="#"
+                            <a href="{{route('activities.by.city',$city->id)}}"
                                 class="text-xl font-semibold text-cornell-red hover:underline dark:text-white ">
                                 {{ $city->name }}
                             </a>
@@ -160,27 +143,27 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     @forelse ($reviews as $review)
-                        
-                    <div class="swiper-slide">
-                        <div class=" mx-auto mt-8 xl:mt-10 max-w-2xl">
-                            <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
-                                <p class="leading-loose text-gray-500 dark:text-gray-300">
-                                    “{{$review->description}}”.
-                                </p>
+                        <div class="swiper-slide">
+                            <div class=" mx-auto mt-8 xl:mt-10 max-w-2xl">
+                                <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-800 md:p-8">
+                                    <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                        “{{ $review->description }}”.
+                                    </p>
 
-                                <div class="flex items-center mt-6">
-                                    <img class="object-cover rounded-full w-14 h-14"
-                                        src="{{ $review->user->getFirstMediaUrl('profiles') }}"
-                                        alt="">
+                                    <div class="flex items-center mt-6">
+                                        <img class="object-cover rounded-full w-14 h-14"
+                                            src="{{ $review->user->getFirstMediaUrl('profiles') }}" alt="">
 
-                                    <div class="mx-4">
-                                        <h1 class="font-semibold text-blue-500">{{ $review->user->first_name}} {{ $review->user->last_name}}</h1>
-                                        <span class="text-sm text-gray-500 dark:text-gray-300">client at DadesAdventures</span>
+                                        <div class="mx-4">
+                                            <h1 class="font-semibold text-blue-500">{{ $review->user->first_name }}
+                                                {{ $review->user->last_name }}</h1>
+                                            <span class="text-sm text-gray-500 dark:text-gray-300">client at
+                                                DadesAdventures</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     @empty
                         <p>---</p>
@@ -192,47 +175,50 @@
 
         </div>
     </section>
-    <section class="bg-gray-100">
-        <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-                <div class="lg:col-span-2 lg:py-12">
-                    <p class="max-w-xl text-lg">
-                        We value your opinion! Your feedback is instrumental in helping us improve and tailor our
-                        services to better meet your needs. If you've had a positive experience with us, we'd be
-                        immensely grateful if you could take a moment to share your thoughts. Thank you for choosing us,
-                        and we look forward to hearing about your experience
-                    </p>
+    @auth
 
 
-                </div>
+        <section class="bg-gray-100">
+            <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+                    <div class="lg:col-span-2 lg:py-12">
+                        <p class="max-w-xl text-lg">
+                            We value your opinion! Your feedback is instrumental in helping us improve and tailor our
+                            services to better meet your needs. If you've had a positive experience with us, we'd be
+                            immensely grateful if you could take a moment to share your thoughts. Thank you for choosing us,
+                            and we look forward to hearing about your experience
+                        </p>
 
-                <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                    <form action="{{ route('user.reviews.store') }}" method="POST" class="space-y-4">
-                        @csrf
-                        <div>
-                            <input class="w-full rounded-lg border-gray-200 p-3 text-sm" type="hidden"
-                                id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
-                        </div>
-                        <div>
-                            <label class="sr-only" for="message">Review</label>
-                            <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Review" rows="8" id="message"
-                                name="description">{{ old('description') }}</textarea>
-                            @error('description')
-                                <p class="text-sm text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="mt-4">
-                            <button type="submit"
-                                class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto">
-                                Send Your Review
-                            </button>
-                        </div>
-                    </form>
+
+                    </div>
+
+                    <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+                        <form action="{{ route('user.reviews.store') }}" method="POST" class="space-y-4">
+                            @csrf
+                            <div>
+                                <input class="w-full rounded-lg border-gray-200 p-3 text-sm" type="hidden"
+                                    id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
+                            </div>
+                            <div>
+                                <label class="sr-only" for="message">Review</label>
+                                <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Review" rows="8" id="message"
+                                    name="description">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <p class="text-sm text-red-500">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit"
+                                    class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto">
+                                    Send Your Review
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    @endauth
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

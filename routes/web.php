@@ -36,9 +36,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/dashboard', function () {
-    return view('Admin.dashboard');
-})->name('dashboard');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/details/{activity}', [HomeController::class, 'details'])->name('details');
@@ -77,7 +75,7 @@ Route::post('logout', [AuthenticationController::class, 'destroy'])
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::prefix('admin')->name('admin.')->middleware(['auth','admin'])->group(function() {
 
 Route::resource('/categories', CategoryController::class);
 
@@ -109,11 +107,14 @@ Route::put('/providers/{providerId}/unblock', [ProviderController::class, 'unblo
 Route::get('/searchProbider', [ProviderController::class, 'searchProbider'])->name('searchProbider');
 
 
+Route::get('/dashboard', [UserController::class, 'getDashboard'])->name('dashboard');
+
+
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::prefix('provider')->name('provider.')->group(function(){
+Route::prefix('provider')->name('provider.')->middleware(['auth','provider'])->group(function(){
     
     Route::get('/dashboard', function () {
         return view('Provider.dashboard');
@@ -134,7 +135,7 @@ Route::prefix('provider')->name('provider.')->group(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::prefix('user')->name('user.')->group(function(){
+Route::prefix('user')->name('user.')->middleware(['auth'])->group(function(){
 
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
     Route::post('/session', 'App\Http\Controllers\User\StripeController@session')->name('session');
@@ -148,8 +149,10 @@ Route::prefix('user')->name('user.')->group(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['auth']);
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware(['auth']);
+
+
 
 Route::get('/searchActivity', [HomeController::class, 'search'])->name('searchActivity');

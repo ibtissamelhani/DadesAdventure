@@ -16,6 +16,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
+        
         $proActivities = Auth::user()->providedActivities()->paginate(9);
         return view('Provider.activity.index', compact('proActivities'));
     }

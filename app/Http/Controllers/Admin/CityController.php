@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\City;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,9 +14,14 @@ class CityController extends Controller
 {
     public function index()
     {
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $cities = City::paginate(8);
         $countCity = City::count();
-        return view ('admin.city.index', compact('cities','countCity'));
+        return view ('admin.city.index', compact('cities','countCity','totalActivities','totalUsers','totalReservation'));
     }
 
     /**
