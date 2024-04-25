@@ -88,7 +88,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-blood-red dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
+                    <a href="{{route('admin.dashboard')}}"
                         class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-gray-100/20 dark:hover:bg-gray-700 group">
                         <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -194,14 +194,15 @@
         </div>
 
     </aside>
+    @props(['totalReservation', 'totalActivities','totalUsers'])
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3  gap-4 mb-4">
                 <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
                     <div>
-                        <p class="text-sm text-gray-500">Profit</p>
+                        <p class="text-sm text-gray-500">total Activities</p>
 
-                        <p class="text-2xl font-medium text-gray-900">$240.94</p>
+                        <p class="text-2xl font-medium text-gray-900">{{$totalActivities}}</p>
                     </div>
 
                     <div class="inline-flex gap-2 rounded bg-green-100 p-1 text-green-600">
@@ -211,14 +212,14 @@
                                 d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
 
-                        <span class="text-xs font-medium"> 67.81% </span>
+                        <span class="text-xs font-medium"> {{$totalActivities}}</span>
                     </div>
                 </article>
                 <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
                     <div>
-                        <p class="text-sm text-gray-500">Profit</p>
+                        <p class="text-sm text-gray-500">Number of User</p>
 
-                        <p class="text-2xl font-medium text-gray-900">$240.94</p>
+                        <p class="text-2xl font-medium text-gray-900">{{$totalUsers}}</p>
                     </div>
 
                     <div class="inline-flex gap-2 rounded bg-green-100 p-1 text-green-600">
@@ -228,14 +229,14 @@
                                 d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
 
-                        <span class="text-xs font-medium"> 67.81% </span>
+                        <span class="text-xs font-medium"> {{$totalUsers}} </span>
                     </div>
                 </article>
                 <article class="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
                     <div>
-                        <p class="text-sm text-gray-500">Profit</p>
+                        <p class="text-sm text-gray-500">Total Reservation</p>
 
-                        <p class="text-2xl font-medium text-gray-900">$240.94</p>
+                        <p class="text-2xl font-medium text-gray-900">{{$totalReservation}}</p>
                     </div>
 
                     <div class="inline-flex gap-2 rounded bg-green-100 p-1 text-green-600">
@@ -245,7 +246,7 @@
                                 d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
 
-                        <span class="text-xs font-medium"> 67.81% </span>
+                        <span class="text-xs font-medium"> {{$totalReservation}} </span>
                     </div>
                 </article>
                 @if ($errors->any())
@@ -279,6 +280,7 @@
             {{ $slot }}
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

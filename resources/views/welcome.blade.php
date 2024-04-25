@@ -117,7 +117,7 @@
                             src="{{ $city->getFirstMediaUrl('cities') }}" alt="photo">
 
                         <div class="flex flex-col gap-4 py-6 lg:mx-6">
-                            <a href="#"
+                            <a href="{{route('activities.by.city',$city->id)}}"
                                 class="text-xl font-semibold text-cornell-red hover:underline dark:text-white ">
                                 {{ $city->name }}
                             </a>

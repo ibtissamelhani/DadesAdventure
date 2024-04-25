@@ -36,9 +36,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/dashboard', function () {
-    return view('Admin.dashboard');
-})->name('dashboard');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/details/{activity}', [HomeController::class, 'details'])->name('details');
@@ -107,6 +105,9 @@ Route::resource('/providers', ProviderController::class);
 Route::put('/providers/{providerId}/block', [ProviderController::class, 'blockUser'])->name('provider.block');
 Route::put('/providers/{providerId}/unblock', [ProviderController::class, 'unblockUser'])->name('provider.unblock');
 Route::get('/searchProbider', [ProviderController::class, 'searchProbider'])->name('searchProbider');
+
+
+Route::get('/dashboard', [UserController::class, 'getDashboard'])->name('dashboard');
 
 
 });

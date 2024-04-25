@@ -29,7 +29,7 @@ class AuthenticationController extends Controller
         $request->authenticate();
 
         if (Auth::user()->roles->contains('id', 1)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('home');
         }

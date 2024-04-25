@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,5 +42,26 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'User unblocked successfully.');
+    }
+
+    public function getDashboard(){
+        $pendingActivities = Activity::where('status',0)->count();
+        $publishedActivities = Activity::where('status',1)->count();
+
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', 'user');
+        })->count();
+        $guide = User::whereHas('roles', function ($query) {
+            $query->where('name', 'guide');
+        })->count();
+        $provider = User::whereHas('roles', function ($query) {
+            $query->where('name', 'provider');
+        })->count();
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
+        return view('Admin.dashboard', compact('pendingActivities','publishedActivities','provider','guide','user','totalActivities','totalUsers','totalReservation'));
     }
 }
