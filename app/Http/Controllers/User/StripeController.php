@@ -58,7 +58,7 @@ class StripeController extends Controller
 
             $activity->decrementCapacity($request->number_of_places);
             DB::commit();
-            return redirect()->route('details', $activity)->with('status', 'Booking Tickets Successfully!we will reach you soon.');
+            return redirect()->route('details', $activity)->with('success', 'Booking Tickets Successfully!we will reach you soon.');
     
         }
        

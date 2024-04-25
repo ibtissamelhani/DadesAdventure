@@ -28,7 +28,7 @@ class ContactController extends Controller
         ]);
         
 
-        Mail::to('4e74023503180a@inbox.mailtrap.io')->send(new ContactFormMail($validatedData));
+        Mail::to('admin@gmail.com')->send(new ContactFormMail($validatedData));
 
         return redirect()->back()->with('success', 'Message sent successfully!');
     }

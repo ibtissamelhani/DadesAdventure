@@ -12,10 +12,14 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Provider\ActivityController;
+use App\Http\Controllers\Provider\ReservationController as ProviderReservationController;
 use App\Http\Controllers\User\AboutUsController;
+use App\Http\Controllers\User\ActivityController as UserActivityController;
+use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ReservationController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripePaymentController;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +51,9 @@ Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 Route::get('/test-email', [ContactController::class, 'testEmail']);
+
+Route::get('/activities-by-city/{id}', [UserActivityController::class, 'getActivitiesByCity'])->name('activities.by.city');
+Route::get('/activities-by-category/{id}', [UserActivityController::class, 'getActivitiesByCategory'])->name('activities.by.category');
 
 /**
      * Auth routes
@@ -115,6 +122,10 @@ Route::prefix('provider')->name('provider.')->group(function(){
     Route::get('/activities/search', [ActivityController::class, 'search'])->name('activities.search');
 
     Route::resource('/activities', ActivityController::class);
+    
+    Route::get('/reservations', [ProviderReservationController::class,'index'])->name('reservations');
+
+    Route::get('/reservations/{id}', [ProviderReservationController::class,'show'])->name('getreservations');
 
 
 });
@@ -128,6 +139,10 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
     Route::post('/session', 'App\Http\Controllers\User\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\User\StripeController@success')->name('success');
+    Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+    Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+    Route::resource('/reviews',ReviewController::class);
+
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
