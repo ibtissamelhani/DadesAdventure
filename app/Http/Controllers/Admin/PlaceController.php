@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePlaceRequest;
 use App\Http\Requests\UpdatePlaceRequest;
+use App\Models\Activity;
 use App\Models\City;
 use App\Models\Place;
+use App\Models\Reservation;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -18,19 +21,28 @@ class PlaceController extends Controller
      */
     public function index()
     {
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+        
         $places = Place::with('city','type')->paginate(8);
         $countPlaces = Place::count();
         $cities = City::all();
         $types = Type::all();
-        return view ('admin.place.index', compact('places','types','cities','countPlaces'));
+        return view ('admin.place.index', compact('places','types','cities','countPlaces','totalActivities','totalUsers','totalReservation'));
     }
 
     public function edit(Place $place)
     {
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $countPlaces = Place::count();
         $cities = City::all();
         $types = Type::all();
-        return view('admin.place.edit', compact('place','cities','types','countPlaces'));
+        return view('admin.place.edit', compact('place','cities','types','countPlaces','totalActivities','totalUsers','totalReservation'));
     }
 
     public function store(StorePlaceRequest $request)

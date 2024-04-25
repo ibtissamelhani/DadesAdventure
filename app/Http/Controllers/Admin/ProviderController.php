@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProviderRequest;
 use App\Mail\CreateProfileMail;
+use App\Models\Activity;
 use App\Models\City;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,22 +21,36 @@ class ProviderController extends Controller
      */
     public function index()
     {
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $providers = User::whereHas('roles', function ($query) {
             $query->where('name', 'provider');
         })->paginate(8);
         
-        return view ('admin.provider.index', compact('providers'));
+        return view ('admin.provider.index', compact('providers','totalActivities','totalUsers','totalReservation'));
     }
 
 
     public function create(){
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $cities = City::all();
-        return view ('admin.provider.create',compact('cities'));
+        return view ('admin.provider.create',compact('cities','totalActivities','totalUsers','totalReservation'));
     }
 
 
     public function show(User $provider){
-        return view ('admin.provider.show',compact('provider'));
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
+        return view ('admin.provider.show',compact('provider','totalActivities','totalUsers','totalReservation'));
     }
 
 

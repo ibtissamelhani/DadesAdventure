@@ -1,4 +1,4 @@
-<x-admin.dashboard>
+<x-admin.dashboard :totalActivities="$totalActivities" :totalUsers="$totalUsers" :totalReservation="$totalReservation">
     <a href="{{ route('admin.guides.index') }}">
         <svg class="w-6 h-6 hover:text-cornell-red text-gray-800 dark:text-white" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">

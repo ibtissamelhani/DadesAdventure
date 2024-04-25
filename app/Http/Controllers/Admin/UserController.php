@@ -15,13 +15,18 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'user');
         })->get();
         $usersCount = User::whereHas('roles', function ($query) {
             $query->where('name', 'user');
         })->where('status', 1)->count();
-        return view ('admin.user.index', compact('users','usersCount'));
+        return view ('admin.user.index', compact('users','usersCount','totalActivities','totalUsers','totalReservation'));
     }
 
 

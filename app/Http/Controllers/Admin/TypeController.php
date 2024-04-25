@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
+use App\Models\Reservation;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -14,9 +17,13 @@ class TypeController extends Controller
      */
     public function index()
     {
+        $totalActivities = Activity::count();
+        $totalUsers = User::count();
+        $totalReservation = Reservation::count();
+
         $types = Type::paginate(8);
         $countType = Type::count();
-        return view ('admin.type.index', compact('types','countType'));
+        return view ('admin.type.index', compact('types','countType','totalActivities','totalUsers','totalReservation'));
     }
 
     /**
