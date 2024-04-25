@@ -28,7 +28,7 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="" class="flex ms-2 md:me-24">
+                    <a href="{{route('home')}}" class="flex ms-2 md:me-24">
                         <img src="{{ asset('images/logo2w.png') }}" class="h-8 me-3" alt="Logo" />
 
                     </a>
