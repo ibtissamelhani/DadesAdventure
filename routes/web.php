@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Provider\ActivityController;
 use App\Http\Controllers\User\AboutUsController;
+use App\Http\Controllers\User\ActivityController as UserActivityController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HomeController;
@@ -49,6 +50,9 @@ Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 Route::get('/test-email', [ContactController::class, 'testEmail']);
+
+Route::get('/activities-by-city/{id}', [UserActivityController::class, 'getActivitiesByCity'])->name('activities.by.city');
+Route::get('/activities-by-category/{id}', [UserActivityController::class, 'getActivitiesByCategory'])->name('activities.by.category');
 
 /**
      * Auth routes

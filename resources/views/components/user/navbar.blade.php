@@ -56,7 +56,7 @@
                                 aria-labelledby="dropdownLargeButton">
                                 @foreach ($experiences as $experience)
                                     <li>
-                                        <a href="#"
+                                        <a href="{{route('activities.by.category', $experience->id)}}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $experience->name }}</a>
                                     </li>
                                 @endforeach
@@ -80,7 +80,7 @@
                                 aria-labelledby="dropdownLargeButton">
                                 @foreach ($destinations as $destination)
                                     <li>
-                                        <a href="#"
+                                        <a href="{{route('activities.by.city',$destination->id)}}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $destination->name }}</a>
                                     </li>
                                 @endforeach
