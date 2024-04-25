@@ -24,10 +24,7 @@
 
                     <div>
                         <h3 class="text-gray-400 uppercase dark:text-white">Things To Do</h3>
-                        <a href="#" class="block mt-2 text-sm text-gray-200 dark:text-gray-400 hover:underline">Mega cloud</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-200 dark:text-gray-400 hover:underline">Aperion UI</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-200 dark:text-gray-400 hover:underline">Meraki UI</a>
-                    </div>
+                     </div>
 
                     <div>
                         <h3 class="text-gray-400 uppercase dark:text-white">Contact</h3>
