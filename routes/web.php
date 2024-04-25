@@ -57,19 +57,22 @@ Route::get('/activities-by-category/{id}', [UserActivityController::class, 'getA
      * Auth routes
      *///////////////////////////////////////////////////////////////////////////////////////////
 
+     Route::middleware('guest')->group(function () {
 
-Route::get('register', [RegisterController::class, 'create'])
-->name('register');
+        Route::get('register', [RegisterController::class, 'create'])
+        ->name('register');
+    
+        Route::get('login', [AuthenticationController::class, 'create'])
+        ->name('login');
+    
+        Route::post('register', [RegisterController::class, 'store']);
+    
+        Route::post('login', [AuthenticationController::class, 'store']);
+     });
 
-Route::get('login', [AuthenticationController::class, 'create'])
-->name('login');
-
-Route::post('register', [RegisterController::class, 'store']);
-
-Route::post('login', [AuthenticationController::class, 'store']);
 
 Route::post('logout', [AuthenticationController::class, 'destroy'])
-                ->name('logout');
+                ->name('logout')->middleware(['auth']);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
