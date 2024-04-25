@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Provider\ActivityController;
+use App\Http\Controllers\Provider\ReservationController as ProviderReservationController;
 use App\Http\Controllers\User\AboutUsController;
 use App\Http\Controllers\User\ActivityController as UserActivityController;
 use App\Http\Controllers\User\BookingController;
@@ -121,6 +122,10 @@ Route::prefix('provider')->name('provider.')->group(function(){
     Route::get('/activities/search', [ActivityController::class, 'search'])->name('activities.search');
 
     Route::resource('/activities', ActivityController::class);
+    
+    Route::get('/reservations', [ProviderReservationController::class,'index'])->name('reservations');
+
+    Route::get('/reservations/{id}', [ProviderReservationController::class,'show'])->name('getreservations');
 
 
 });
