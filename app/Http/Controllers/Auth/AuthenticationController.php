@@ -30,7 +30,12 @@ class AuthenticationController extends Controller
 
         if (Auth::user()->roles->contains('id', 1)) {
             return redirect()->route('admin.dashboard');
-        } else {
+
+        } else if(Auth::user()->roles->contains('id', 4)){
+
+            return redirect()->route('provider.activities.index');
+        }
+        else {
             return redirect()->route('home');
         }
     }
