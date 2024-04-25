@@ -147,16 +147,7 @@
                         <span class="ms-3">Activities</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-gray-100/20 dark:hover:bg-gray-700 dark:text-white group">
-                        <span
-                            class="material-symbols-outlined  flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white">
-                            local_activity
-                        </span>
-                        <span class="ms-3">Reservations</span>
-                    </a>
-                </li>
+                
                 <li>
                     <a href="{{ route('admin.categories.index') }}"
                         class="flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-gray-100/20 dark:hover:bg-gray-700 dark:text-white group">

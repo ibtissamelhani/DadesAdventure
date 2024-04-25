@@ -51,10 +51,10 @@ class HomeController extends Controller
         $title = $request->query('title');
         $category = $request->query('category');
         $from = $request->query('from');
-        $to = $request->query('to');
+        $to = $request->query('to'); 
 
 
-        $activities = Activity::query();
+        $activities = Activity::query()->with('category','place.city');
 
         if ($title) {
             $activities->where('name', 'like', '%' . $title . '%');
