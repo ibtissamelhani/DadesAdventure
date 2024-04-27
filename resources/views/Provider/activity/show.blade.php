@@ -21,7 +21,7 @@
                     </h1>
 
                     <p class="max-w-lg mt-6 text-gray-500 dark:text-gray-400 ">
-                        “ {{$activity->description}} ”
+                        “ {!! $activity->description !!} ”
                     </p>
 
                     <h3 class="mt-6 mb-3 text-lg font-medium text-delft-blue">N° places : {{$activity->capacity}}</h3>

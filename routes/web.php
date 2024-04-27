@@ -117,7 +117,7 @@ Route::get('/dashboard', [UserController::class, 'getDashboard'])->name('dashboa
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::prefix('provider')->name('provider.')->middleware(['auth','provider'])->group(function(){
+Route::prefix('provider')->name('provider.')->middleware(['auth','provider','checkBaned'])->group(function(){
     
     Route::get('/dashboard', function () {
         return view('Provider.dashboard');
@@ -138,7 +138,7 @@ Route::prefix('provider')->name('provider.')->middleware(['auth','provider'])->g
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::prefix('user')->name('user.')->middleware(['auth'])->group(function(){
+Route::prefix('user')->name('user.')->middleware(['auth','checkBaned'])->group(function(){
 
     Route::get('/reservation/{activity}', [ReservationController::class, 'showReservation'])->name('reservation');
     Route::post('/session', 'App\Http\Controllers\User\StripeController@session')->name('session');

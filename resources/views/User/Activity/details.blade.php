@@ -29,7 +29,7 @@
                 <h2 class="text-2xl font-semibold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
                     {{ $activity->name }}
                 </h2>
-                <p class="block max-w-2xl mt-4 text-gray-500 dark:text-gray-300">{{ $activity->description }} </p>
+                <p class="block max-w-2xl mt-4 text-gray-500 dark:text-gray-300">{!! $activity->description !!} </p>
                 <p class="block max-w-xl mt-4 text-red-800 dark:text-red-500">Address : {{ $activity->place->name }},
                     {{ $activity->place->address }}, {{ $activity->place->city->name }} Morocco</p>
                 <div class="flex p-4  mt-6 sm:-mx-2">
